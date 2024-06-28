@@ -38,6 +38,9 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     ctrl.drugsData = {};
     ctrl.airwaysData = {};
     ctrl.airwaysForAge = {};
+    ctrl.estimatedWeighByAge = {};
+    ctrl.esitmatedMaleWeight = "";
+    ctrl.esitmatedFemaleWeight = "";
 
     function init() {
         $http.get('/resus/data/resus-drugs.json').then(function(response) {
@@ -45,8 +48,16 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         });
         $http.get('/resus/data/airways.json').then(function(response) {
             ctrl.airwaysData = response.data;
+            estimatedWeighByAge = parseRawDataToEstimatedWeights();
         });
     };
+
+    function parseRawDataToEstimatedWeights(){
+        for (var i = 0; i < ctrl.airwaysData.dataByAge.length; ++i) {
+            const {age, estimatedMaleWeight, estimatedFemaleWeight} = ctrl.airwaysData.dataByAge[i];
+            ctrl.estimatedWeighByAge[age] = {male:estimatedMaleWeight, female: estimatedFemaleWeight};
+        }
+    }
 
     ctrl.getDefi = function(multiplier) {      
         return Math.min(multiplier*ctrl.weight,200);
@@ -64,9 +75,14 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     
     ctrl.changedValue = function() {   
         if (!ctrl.age) {
+            ctrl.esitmatedMaleWeight = "";
+            ctrl.esitmatedFemaleWeight = "";
             return;            
         }
         var ageAsString = ctrl.ageAsInTable();
+        ctrl.esitmatedMaleWeight = ctrl.estimatedWeighByAge[ageAsString].male;
+        ctrl.esitmatedFemaleWeight = ctrl.estimatedWeighByAge[ageAsString].female;
+        
         for (var i = 0; i < ctrl.airwaysData.dataByAge.length; ++i) {
             const currData = ctrl.airwaysData.dataByAge[i];
             if (ageAsString == currData.age) {
