@@ -34,9 +34,10 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     ctrl.weight;
     ctrl.age;
     ctrl.ageScale = 'YEARS';
-    ctrl.sex = 'BOY';
+    ctrl.sex; // possible values: MALE, FEMALE
     ctrl.drugsData = {};
     ctrl.airwaysData = {};
+    ctrl.airwaysForAge = {};
 
     function init() {
         $http.get('/resus/data/resus-drugs.json').then(function(response) {
@@ -46,9 +47,33 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
             ctrl.airwaysData = response.data;
         });
     };
+
+    ctrl.getDefi = function(multiplier) {      
+        return Math.min(multiplier*ctrl.weight,200);
+    };
+
+    ctrl.ageAsInTable = function() {
+        if (ctrl.age == 1 && ctrl.ageScale == 'YEARS') {
+            return "12 month";
+        }
+        if (ctrl.age == 2 && ctrl.ageScale == 'YEARS') {
+            return "24 month";
+        }
+        return ctrl.age + (ctrl.ageScale == 'YEARS' ? " year" : " month");
+    }
     
-    ctrl.changedValue = function(callback) {   
-    
+    ctrl.changedValue = function() {   
+        if (!ctrl.age) {
+            return;            
+        }
+        var ageAsString = ctrl.ageAsInTable();
+        for (var i = 0; i < ctrl.airwaysData.dataByAge.length; ++i) {
+            const currData = ctrl.airwaysData.dataByAge[i];
+            if (ageAsString == currData.age) {
+                ctrl.airwaysForAge = currData;
+                return;
+            }
+        }
     };
 
     ctrl.evalDose2 = function(drug) {
@@ -69,13 +94,28 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         return formatNumberValue(func(drug.dose, ctrl.weight, ctrl.evalDose2(drug)));
     };
 
-    ctrl.selectAgeScale = function(scale) {
-        ctrl.ageScale = scale;
-    };
-
     ctrl.selectSex = function(sex) {
         ctrl.sex = sex;
+        if (!ctrl.airwaysForAge || !ctrl.sex) {
+            return;    
+        }
+        const key = ctrl.sex == 'MALE' ? 'estimatedMaleWeight' : 'estimatedFemaleWeight';
+        ctrl.weight = ctrl.airwaysForAge[key];
     };    
+
+    ctrl.allValuesSatisfied = function() {
+        return ctrl.weight && ctrl.age;
+    };
+
+    ctrl.getBlade = function() {
+        return ctrl.airwaysForAge.blade;
+    };
+    ctrl.getEttDiameter = function() {
+        return ctrl.airwaysForAge.cuffedETT;
+    };
+    ctrl.getLma = function() {
+        return ctrl.airwaysForAge.lma;
+    };
 
     ctrl.resetAll = function() {
         ctrl.weight = -1;
@@ -99,7 +139,7 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         }
         if (age == "2 month") {
             return "חודשיים";
-        }
+        }        
         if (age == "1 year") {
             return "שנה";
         }

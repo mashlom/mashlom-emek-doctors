@@ -79,11 +79,11 @@
               <input ng-change="ctrl.changedValue()" ng-model-options="{ allowInvalid: true}" inputmode="decimal" type="text" pattern="[0-9]{1,4}" maxlength="3"
               style="max-width: 90px;" ng-model="ctrl.age" class="form-control" id="age" select-on-click >
               <div class="form-check form-check-inline" style="padding-left: 2em;">                  
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="YEARS" checked>                  
+                <input ng-model="ctrl.ageScale" ng-change="ctrl.changedValue()" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="YEARS" checked>                  
               </div>
               <label class="form-check-label" for="inlineRadio1">שנים</label>
               <div class="form-check form-check-inline" style="padding-left: 2em;">                  
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="MONTHS" >                  
+                <input ng-model="ctrl.ageScale" ng-change="ctrl.changedValue()" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="MONTHS" >                  
               </div>
               <label class="form-check-label" for="inlineRadio2">חודשים</label>
               <div class="buttons-group">
@@ -93,28 +93,28 @@
       <div class="row form-group">
         <div class="col-auto fs-5  col-auto-text-cols">
           הערכת משקל לפי גיל:
-          <button id="sexBoy" type="button" class="btn btn-outline-secondary" ng-class="{ 'buttons-color': ctrl.sex == 'BOY' }" ng-click="ctrl.selectSex('BOY')">לבן</button>
-          <button id="sexGirl" type="button" class="btn btn-outline-secondary" ng-class="{ 'buttons-color': ctrl.sex == 'GIRL' }" ng-click="ctrl.selectSex('GIRL')">לבת</button>
+          <button id="sexMale" type="button" class="btn btn-outline-secondary" ng-class="{ 'buttons-color': ctrl.sex == 'MALE' }" ng-click="ctrl.selectSex('MALE')">לבן</button>
+          <button id="sexFemale" type="button" class="btn btn-outline-secondary" ng-class="{ 'buttons-color': ctrl.sex == 'FEMALE' }" ng-click="ctrl.selectSex('FEMALE')">לבת</button>
         </div>
       </div>
 
-      <div class="cards-container row row-cols-1 row-cols-md-1 g-4" >
+      <div class="cards-container row row-cols-1 row-cols-md-1 g-4" ng-if="ctrl.allValuesSatisfied()">
         <div class="col">
           <div class="card">
             <div class="card-body" >
               <h3>Airways</h3>
-              Laryngiscope blade:	1<br>
-              ETT diameter(Cuffed):	3.5<br>
-              LMA Size:	1.5<br>
+              Laryngiscope blade:	{{ctrl.getBlade()}}<br>
+              ETT diameter(Cuffed):	{{ctrl.getEttDiameter()}}<br>
+              LMA Size:	{{ctrl.getLma()}}<br>
               <h3>Defibrilator</h3>
-              2 J/Kg	14<br>
-              4 J/Kg	28<br>
+              2 J/Kg	{{ctrl.getDefi(2)}}<br>
+              4 J/Kg	{{ctrl.getDefi(4)}}<br>
             </div>
           </div>
         </div>
       </div>
 
-        <div class="accordion accordion-flush" id="accordionFlushExample" style="direction: ltr;">
+        <div class="accordion accordion-flush" id="accordionFlushExample" style="direction: ltr;" ng-if="!!ctrl.weight">
           <div class="accordion-item" ng-repeat="section in ctrl.drugsData.sections track by $index ">
             <h2 class="accordion-header" id="flush-heading{{$index}}">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$index}}" aria-expanded="false" aria-controls="flush-collapse{{$index}}">
