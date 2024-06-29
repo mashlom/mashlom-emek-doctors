@@ -99,18 +99,6 @@ html, body {
     margin-left: 10px;
   }
 
-.accordion-header .accordion-button:after {
-    display: none;
-}
-.accordion-header .accordion-button:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.accordion-button:not(.collapsed) {
-  color: white;
-  background-color: #6585A0;
-}
 
 .list-group {
   padding: 0px;
