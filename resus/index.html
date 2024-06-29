@@ -59,6 +59,9 @@
             <div class="col-auto fs-3 ">
                 <h1>מינוני תרופות בעת החייאה</h1>
             </div>
+            <div class="col-auto me-auto reset-button">
+              <span ng-click="ctrl.resetAll()"><img style="cursor:pointer; width: 35px; height: 35px;margin-right:10px; " src="../assets/refresh.png"></span>
+          </div>        
         </div>
     </div>
       <div class="container">
@@ -116,28 +119,7 @@
         </div>
       </div>
 
-        <div class="accordion accordion-flush" id="accordionFlushExample" style="direction: ltr;" ng-if="!!ctrl.weight">
-          <div class="accordion-item" ng-repeat="section in ctrl.drugsData.sections track by $index ">
-            <h2 class="accordion-header" id="flush-heading{{$index}}">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$index}}" aria-expanded="false" aria-controls="flush-collapse{{$index}}">
-                {{section.name}}
-              </button>
-            </h2>
-            <div id="flush-collapse{{$index}}" class="accordion-collapse" aria-labelledby="flush-heading{{$index}}" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">
-                <ul class="list-group" ng-repeat="drug in section.drugs">
-                  <li  class="list-group-item">
-                    <div>
-                      {{drug.name}}: {{ctrl.evalVolume(drug)}}ml - <b>{{drug.howToGive}}</b>
-                      <!-- <b>{{drug.name}}</b> ({{drug.howToGive}})<br>
-                      {{ctrl.evalDose2(drug)}} {{drug.dose_2_unit}}. Volume (ml): {{ctrl.evalVolume(drug)}} {{drug.of}} -->
-                    </div>    
-                  </li>
-                </ul>  
-              </div>
-            </div>
-          </div>        
-        </div>
+      <drugs></drugs>
       </div>        
     </form>
   </div>  

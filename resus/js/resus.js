@@ -134,8 +134,8 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     };
 
     ctrl.resetAll = function() {
-        ctrl.weight = -1;
-        ctrl.age = -1;    
+        ctrl.weight = undefined;
+        ctrl.age = undefined;    
     };
 
     ctrl.openPanel = function(panel) {
@@ -205,6 +205,15 @@ app.directive('lma', function() {
     return {
         restrict: 'E',
         templateUrl: 'htmls/lma.html',
+        link: function(scope, element, attrs) {
+        }
+    };
+});
+
+app.directive('drugs', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'htmls/drugs.html',
         link: function(scope, element, attrs) {
         }
     };
