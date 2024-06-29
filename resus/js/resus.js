@@ -36,11 +36,13 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     ctrl.ageScale = 'YEARS';
     ctrl.sex; // possible values: MALE, FEMALE
     ctrl.drugsData = {};
+    ctrl.agesFroDropDown = [];
     ctrl.airwaysData = {};
     ctrl.airwaysForAge = {};
     ctrl.estimatedWeighByAge = {};
     ctrl.esitmatedMaleWeight = "";
     ctrl.esitmatedFemaleWeight = "";
+
 
     function init() {
         $http.get('/resus/data/resus-drugs.json').then(function(response) {
@@ -50,6 +52,7 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
             ctrl.airwaysData = response.data;
             estimatedWeighByAge = parseRawDataToEstimatedWeights();
         });
+        createDropDownData();
     };
 
     function parseRawDataToEstimatedWeights(){
@@ -71,29 +74,30 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         return Math.min(multiplier*ctrl.weight,200);
     };
 
-    ctrl.ageAsInTable = function() {
-        if (ctrl.age == 1 && ctrl.ageScale == 'YEARS') {
-            return "12 month";
+    function createDropDownData(){
+        ctrl.agesFroDropDown.push({label: 'בן יומו', value: '0 month'});
+        ctrl.agesFroDropDown.push({label: 'חודש', value: '1 month'});
+        for (var i = 2; i <= 24; i++) {
+            ctrl.agesFroDropDown.push({label: i + ' חודשים', value: i + ' month'});
         }
-        if (ctrl.age == 2 && ctrl.ageScale == 'YEARS') {
-            return "24 month";
+        
+        for (var j = 3; j <= 18; j++) {
+            ctrl.agesFroDropDown.push({label: j + ' שנים', value: j + ' year'});
         }
-        return ctrl.age + (ctrl.ageScale == 'YEARS' ? " year" : " month");
     }
-    
+
     ctrl.changedValue = function() {   
         if (!ctrl.age) {
             ctrl.esitmatedMaleWeight = "";
             ctrl.esitmatedFemaleWeight = "";
             return;            
         }
-        var ageAsString = ctrl.ageAsInTable();
-        ctrl.esitmatedMaleWeight = ctrl.estimatedWeighByAge[ageAsString].male;
-        ctrl.esitmatedFemaleWeight = ctrl.estimatedWeighByAge[ageAsString].female;
+        ctrl.esitmatedMaleWeight = ctrl.estimatedWeighByAge[ctrl.age].male;
+        ctrl.esitmatedFemaleWeight = ctrl.estimatedWeighByAge[ctrl.age].female;
         
         for (var i = 0; i < ctrl.airwaysData.dataByAge.length; ++i) {
             const currData = ctrl.airwaysData.dataByAge[i];
-            if (ageAsString == currData.age) {
+            if (ctrl.age == currData.age) {
                 ctrl.airwaysForAge = currData;
                 return;
             }
