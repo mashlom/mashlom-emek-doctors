@@ -59,6 +59,14 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         }
     }
 
+    ctrl.applyMale = function() {
+        ctrl.weight = ctrl.esitmatedMaleWeight;
+    };
+
+    ctrl.applyFemale = function() {
+        ctrl.weight = ctrl.esitmatedFemaleWeight;
+    };
+
     ctrl.getDefi = function(multiplier) {      
         return Math.min(multiplier*ctrl.weight,200);
     };
@@ -136,6 +144,8 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     ctrl.resetAll = function() {
         ctrl.weight = undefined;
         ctrl.age = undefined;    
+        ctrl.esitmatedMaleWeight = "";
+        ctrl.esitmatedFemaleWeight = "";
     };
 
     ctrl.openPanel = function(panel) {

@@ -88,13 +88,14 @@
           </div>
       </div>
       <div class="row form-group">
-        <div ng-show="ctrl.age">
+        <div ng-show="ctrl.age" ng-click="ctrl.applyMale()" style="cursor:pointer;">
           משוערך בנים: {{ctrl.esitmatedMaleWeight}} ק"ג 
+          <i class="fa-solid fa-person-circle-check"></i>
         </div>
-        <div ng-show="ctrl.age">
+        <div ng-show="ctrl.age" style="cursor:pointer; padding-top: 10px;" ng-click="ctrl.applyFemale()">
           משוערך בנות: {{ctrl.esitmatedFemaleWeight}} ק"ג
+          <i class="fa-solid fa-person-circle-check"></i>
         </div>
-      </div>
       <div class="row form-group">
         <div class="col-auto fs-5  col-auto-text-cols">
             משקל (ק"ג)
