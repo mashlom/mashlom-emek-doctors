@@ -97,22 +97,29 @@
                maxlength="4" style="max-width: 90px;" ng-model="ctrl.weight" class="form-control" id="weight" select-on-click >
         </div>
     </div>
-      <div class="cards-container row row-cols-1 row-cols-md-1 g-4" ng-if="ctrl.allValuesSatisfied()">
-        <div class="col">
-          <div class="card">
-            <div class="card-body" >
+    <div class="cards-container row row-cols-1 row-cols-md-1 g-4" ng-if="ctrl.allValuesSatisfied()">
+      <div class="col">
+        <div class="card">
+          <div class="card-body row">
+            <div class="col-md-6">
               <h3>Airways</h3>
-              Laryngiscope blade:	{{ctrl.getBlade()}}<br>
-              ETT diameter(Cuffed):	{{ctrl.getEttDiameter()}}<br>
-              LMA Size:	{{ctrl.getLma()}}<br>
-              <h3>Defibrilator</h3>
-              2 J/Kg	{{ctrl.getDefi(2)}}<br>
-              4 J/Kg	{{ctrl.getDefi(4)}}<br>
+              <ul class="list-group">
+                <li class="list-group-item">Laryngiscope blade: {{ctrl.getBlade()}}</li>
+                <li class="list-group-item">ETT diameter (Cuffed): {{ctrl.getEttDiameter()}}</li>
+                <li class="list-group-item">LMA Size: {{ctrl.getLma()}}</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h3>Defibrillator</h3>
+              <ul class="list-group">
+                <li class="list-group-item">{{ctrl.getDefi(2)}} (2J/Kg)</li>
+                <li class="list-group-item">{{ctrl.getDefi(4)}} (4J/Kg)</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-
+    </div>
       <drugs></drugs>
       </div>        
     </form>

@@ -50,9 +50,9 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         });
         $http.get('/resus/data/airways.json').then(function(response) {
             ctrl.airwaysData = response.data;
-            estimatedWeighByAge = parseRawDataToEstimatedWeights();
-        });
-        createDropDownData();
+            parseRawDataToEstimatedWeights();
+            createDropDownData();
+        }); 
     };
 
     function parseRawDataToEstimatedWeights(){
@@ -75,15 +75,10 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     };
 
     function createDropDownData(){
-        ctrl.agesFroDropDown.push({label: 'בן יומו', value: '0 month'});
-        ctrl.agesFroDropDown.push({label: 'חודש', value: '1 month'});
-        for (var i = 2; i <= 24; i++) {
-            ctrl.agesFroDropDown.push({label: i + ' חודשים', value: i + ' month'});
-        }
-        
-        for (var j = 3; j <= 18; j++) {
-            ctrl.agesFroDropDown.push({label: j + ' שנים', value: j + ' year'});
-        }
+        const ages = ctrl.airwaysData.dataByAge.map(item => item.age);
+        ages.forEach(age => {
+            ctrl.agesFroDropDown.push({label: ctrl.formatAge(age), value: age});
+        });
     }
 
     ctrl.changedValue = function() {   
