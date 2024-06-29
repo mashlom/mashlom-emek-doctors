@@ -50,9 +50,17 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         });
         $http.get('/resus/data/airways.json').then(function(response) {
             ctrl.airwaysData = response.data;
-            estimatedWeighByAge = parseRawDataToEstimatedWeights();
+            parseRawDataToEstimatedWeights();
+            createDropDownData();
         });        
-    };
+    };    
+
+    function createDropDownData(){
+        const ages = ctrl.airwaysData.dataByAge.map(item => item.age);
+        ages.forEach(age => {
+            ctrl.agesFroDropDown.push({label: ctrl.formatAge(age), value: age});
+        });
+    }
 
     function parseRawDataToEstimatedWeights(){
         for (var i = 0; i < ctrl.airwaysData.dataByAge.length; ++i) {
