@@ -1,12 +1,35 @@
-.accordion-header .accordion-button:after {
-    display: none;
-}
-.accordion-header .accordion-button:focus {
-  outline: none;
-  box-shadow: none;
+.drugs-header {
+  color: white;
+  background-color: #103C6E;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 1rem;
 }
 
-.accordion-button:not(.collapsed) {
-  color: white;
-  background-color: #6585A0;
+.bold-text {
+    font-weight: bold;
 }
+
+.tooltip-not-bootstrap {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #B9EDE7;
+    color: black;
+    padding: 8px;
+    border-radius: 15px;
+    white-space: nowrap;
+    z-index: 1000;
+  }
+
+  .tooltip-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: black;
+    font-size: 1rem;
+    cursor: pointer;
+  }

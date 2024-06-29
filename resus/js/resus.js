@@ -41,6 +41,7 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     ctrl.estimatedWeighByAge = {};
     ctrl.esitmatedMaleWeight = "";
     ctrl.esitmatedFemaleWeight = "";
+    ctrl.tooltipIndex = "";
 
     function init() {
         $http.get('/resus/data/resus-drugs.json').then(function(response) {
@@ -49,7 +50,7 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         $http.get('/resus/data/airways.json').then(function(response) {
             ctrl.airwaysData = response.data;
             estimatedWeighByAge = parseRawDataToEstimatedWeights();
-        });
+        });        
     };
 
     function parseRawDataToEstimatedWeights(){
@@ -61,6 +62,14 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
 
     ctrl.getDefi = function(multiplier) {      
         return Math.min(multiplier*ctrl.weight,200);
+    };
+
+    ctrl.toggleTooltip = function(index) {
+        if (ctrl.tooltipIndex === index) {
+          ctrl.tooltipIndex = null;
+        } else {
+          ctrl.tooltipIndex = index;
+        }
     };
 
     ctrl.ageAsInTable = function() {
@@ -91,6 +100,10 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
             }
         }
     };
+
+    ctrl.closeTooltip = function() {
+        ctrl.tooltipIndex = "";
+    }
 
     ctrl.evalDose2 = function(drug) {
         if (!drug.dose_2) {
