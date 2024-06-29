@@ -36,6 +36,7 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     ctrl.ageScale = 'YEARS';
     ctrl.sex; // possible values: MALE, FEMALE
     ctrl.drugsData = {};
+    ctrl.agesFroDropDown = [];
     ctrl.airwaysData = {};
     ctrl.airwaysForAge = {};
     ctrl.estimatedWeighByAge = {};
@@ -60,6 +61,14 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         }
     }
 
+    ctrl.applyMale = function() {
+        ctrl.weight = ctrl.esitmatedMaleWeight;
+    };
+
+    ctrl.applyFemale = function() {
+        ctrl.weight = ctrl.esitmatedFemaleWeight;
+    };
+
     ctrl.getDefi = function(multiplier) {      
         return Math.min(multiplier*ctrl.weight,200);
     };
@@ -81,20 +90,19 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         }
         return ctrl.age + (ctrl.ageScale == 'YEARS' ? " year" : " month");
     }
-    
+
     ctrl.changedValue = function() {   
         if (!ctrl.age) {
             ctrl.esitmatedMaleWeight = "";
             ctrl.esitmatedFemaleWeight = "";
             return;            
         }
-        var ageAsString = ctrl.ageAsInTable();
-        ctrl.esitmatedMaleWeight = ctrl.estimatedWeighByAge[ageAsString].male;
-        ctrl.esitmatedFemaleWeight = ctrl.estimatedWeighByAge[ageAsString].female;
+        ctrl.esitmatedMaleWeight = ctrl.estimatedWeighByAge[ctrl.age].male;
+        ctrl.esitmatedFemaleWeight = ctrl.estimatedWeighByAge[ctrl.age].female;
         
         for (var i = 0; i < ctrl.airwaysData.dataByAge.length; ++i) {
             const currData = ctrl.airwaysData.dataByAge[i];
-            if (ageAsString == currData.age) {
+            if (ctrl.age == currData.age) {
                 ctrl.airwaysForAge = currData;
                 return;
             }
@@ -149,6 +157,8 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     ctrl.resetAll = function() {
         ctrl.weight = undefined;
         ctrl.age = undefined;    
+        ctrl.esitmatedMaleWeight = "";
+        ctrl.esitmatedFemaleWeight = "";
     };
 
     ctrl.openPanel = function(panel) {
