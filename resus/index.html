@@ -110,17 +110,17 @@
           <div class="card-body row">
             <div class="col-md-6">
               <h3>Airways</h3>
-              <ul class="list-group">
-                <li class="list-group-item">Laryngiscope blade: {{ctrl.getBlade()}}</li>
-                <li class="list-group-item">ETT diameter (Cuffed): {{ctrl.getEttDiameter()}}</li>
-                <li class="list-group-item">LMA Size: {{ctrl.getLma()}}</li>
+              <ul class="list-group" style="background-color:#FFECCC;border-radius: 10px;padding:10px;">
+                <span class="defi-data">Laryngiscope blade: {{ctrl.getBlade()}}</span><br>
+                <span class="defi-data">ETT diameter (Cuffed): {{ctrl.getEttDiameter()}}</span><br>
+                <span class="defi-data">LMA Size: {{ctrl.getLma()}}</span>
               </ul>
             </div>
             <div class="col-md-6">
               <h3>Defibrillator</h3>
-              <ul class="list-group">
-                <li class="list-group-item">{{ctrl.getDefi(2)}} (2J/Kg)</li>
-                <li class="list-group-item">{{ctrl.getDefi(4)}} (4J/Kg)</li>
+              <ul class="list-group" style="background-color:#FFECCC;border-radius: 10px;padding:10px;">
+                <span class="defi-data"> {{ctrl.getDefi(2)}} (2J/Kg)</span><br>
+                <span class="defi-data">{{ctrl.getDefi(4)}} (4J/Kg)</span>
               </ul>
             </div>
           </div>
