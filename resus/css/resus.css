@@ -1,3 +1,9 @@
+:root {
+  --bs-list-group-color: var(--page-font-color);
+  --bs-heading-color: var(--page-font-color);
+  --bs-body-color: var(--page-font-color);
+}
+
 html, body {
     max-width: 700px; /* Set maximum width for the body */
     direction: rtl; /* Right-to-left direction */
@@ -6,8 +12,18 @@ html, body {
     margin: 0 auto; /* Center the body horizontally */
     padding: 0;
     font-family: Arial, sans-serif;  
+    color: var(--page-font-color);
 }
 
+h1 {
+  font-size: calc(1.25rem + 1.5vw);
+}
+
+.reset-button {
+  height: calc(1.4rem + 1.5vw);
+  width: calc(1.4rem + 1.5vw);
+  cursor:pointer; margin-right:10px;
+}
 
 .group-container .form-group .form-check {
   display: inline-block; /* Ensures form checks are displayed in line */
@@ -32,17 +48,15 @@ html, body {
     text-align: justify;
 }
 
-.input-col {
-  padding-right: 0px;
+.input-col {  
+  max-width: 120px;
 }
 
 .col-auto-text-cols {      
-  min-width: 170px;
-  padding: 0px;
+  min-width: 130px;
 }
 .col-auto-buttons-cols {      
-    min-width: 170px;
-    padding: 0px;
+    min-width: 130px;
   }
 
 .back-button {

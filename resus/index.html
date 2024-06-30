@@ -60,43 +60,50 @@
             <div class="col-auto fs-3 ">
                 <h1>מינוני תרופות בעת החייאה</h1>
             </div>
-            <div class="col-auto me-auto reset-button">
-              <span ng-click="ctrl.resetAll()"><img style="cursor:pointer; width: 35px; height: 35px;margin-right:10px; " src="../assets/refresh.png"></span>
+            <div class="col-auto me-auto">
+              <span ng-click="ctrl.resetAll()"><img class="reset-button" src="../assets/refresh.png"></span>
           </div>        
         </div>
     </div>
-      <div class="container">
+      <div class="container" style="text-align: right;">
         <div class="row form-group">
-          <div class="col-auto fs-5 col-auto-text-cols">
+          <div class="col-auto fs-4 col-auto-text-cols">
               גיל
           </div>
-            <div class="col-auto fs-5 col-auto-text-cols">
+          <div class="col input-col">
               <select class="form-control" ng-change="ctrl.changedValue()" ng-model="ctrl.age">
                   <option ng-repeat="item in ctrl.agesFroDropDown" value="{{item.value}}">
                       {{item.label}}
                   </option>
               </select>
           </div>
+        </div>
+        <div class="row form-group" >
+          <div ng-show="ctrl.age" ng-click="ctrl.applyMale()" style="cursor:pointer;">
+            <i class="fa-solid fa-weight-scale" style="margin-left: 10px;"></i>
+            משקל משוערך בנים: {{ctrl.esitmatedMaleWeight}} ק"ג 
+            <button type="button" class="btn btn-link ng-binding" ng-click="ctrl.applyMale()" style="padding-right: 0.1rem;" >
+              (הזן)
+            </button>
           </div>
+          <div ng-show="ctrl.age" style="cursor:pointer; padding-top: 10px;" >
+            <i class="fa-solid fa-weight-scale" style="margin-left: 10px;"></i>
+            משקל משוערך בנות: {{ctrl.esitmatedFemaleWeight}} ק"ג            
+            <button type="button" class="btn btn-link ng-binding" ng-click="ctrl.applyFemale()" style="padding-right: 0.1rem;" >
+              (הזן)
+            </button>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-auto fs-4  col-auto-text-cols">
+              משקל (ק"ג)
+          </div>
+          <div class="col input-col">
+              <input ng-change="ctrl.changedValue()" ng-model-options="{ allowInvalid: true}" inputmode="decimal" type="text" pattern="[0-9]{1,4}[.]{0,1}[0-9]{0,1}"
+                 maxlength="4" style="max-width: 90px;" ng-model="ctrl.weight" class="form-control" id="weight" select-on-click >
+          </div>
+        </div>
       </div>
-      <div class="row form-group">
-        <div ng-show="ctrl.age" ng-click="ctrl.applyMale()" style="cursor:pointer;">
-          משוערך בנים: {{ctrl.esitmatedMaleWeight}} ק"ג 
-          <i class="fa-solid fa-person-circle-check"></i>
-        </div>
-        <div ng-show="ctrl.age" style="cursor:pointer; padding-top: 10px;" ng-click="ctrl.applyFemale()">
-          משוערך בנות: {{ctrl.esitmatedFemaleWeight}} ק"ג
-          <i class="fa-solid fa-person-circle-check"></i>
-        </div>
-      <div class="row form-group">
-        <div class="col-auto fs-5  col-auto-text-cols">
-            משקל (ק"ג)
-        </div>
-        <div class="col input-col">
-            <input ng-change="ctrl.changedValue()" ng-model-options="{ allowInvalid: true}" inputmode="decimal" type="text" pattern="[0-9]{1,4}[.]{0,1}[0-9]{0,1}"
-               maxlength="4" style="max-width: 90px;" ng-model="ctrl.weight" class="form-control" id="weight" select-on-click >
-        </div>
-    </div>
     <div class="cards-container row row-cols-1 row-cols-md-1 g-4" ng-if="ctrl.allValuesSatisfied()">
       <div class="col">
         <div class="card">
@@ -118,7 +125,6 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
       <drugs></drugs>
       </div>        
