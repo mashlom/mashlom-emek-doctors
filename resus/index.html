@@ -79,11 +79,14 @@
           </div>
         </div>
         <div class="row form-group" >
-          <div ng-show="ctrl.age" ng-click="ctrl.applyMale()" style="cursor:pointer;">
+          <div ng-show="ctrl.age" style="cursor:pointer;">
             <i class="fa-solid fa-weight-scale" style="margin-left: 10px;"></i>
             משקל משוערך בנים: {{ctrl.esitmatedMaleWeight}} ק"ג 
             <button type="button" class="btn btn-link ng-binding" ng-click="ctrl.applyMale()" style="padding-right: 0.1rem;" >
               (הזן)
+            </button>
+            <button ng-if="false" type="button" class="btn btn-link ng-binding" ng-click="ctrl.applyMaleRounded()" style="padding-right: 0.1rem;" >
+              (הזן ערך מעוגל)
             </button>
           </div>
           <div ng-show="ctrl.age" style="cursor:pointer; padding-top: 10px;" >
@@ -91,6 +94,9 @@
             משקל משוערך בנות: {{ctrl.esitmatedFemaleWeight}} ק"ג            
             <button type="button" class="btn btn-link ng-binding" ng-click="ctrl.applyFemale()" style="padding-right: 0.1rem;" >
               (הזן)
+            </button>
+            <button ng-if="false" type="button" class="btn btn-link ng-binding" ng-click="ctrl.applyFemaleRounded()" style="padding-right: 0.1rem;" >
+              (הזן ערך מעוגל)
             </button>
           </div>
         </div>
@@ -103,7 +109,10 @@
                  maxlength="4" style="max-width: 90px;" ng-model="ctrl.weight" class="form-control" id="weight" select-on-click >
           </div>
         </div>
-      </div>
+        <div class="row form-group" ng-if="ctrl.shouldWarnOnWeight()">
+          <span style="color:red;">המשקל חורג באופן משמעותי מהממוצע לגיל.</span>
+        </div>        
+      </div>      
     <div class="cards-container row row-cols-1 row-cols-md-1 g-4" ng-if="ctrl.allValuesSatisfied()">
       <div class="col">
         <div class="card">

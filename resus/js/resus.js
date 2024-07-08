@@ -68,9 +68,17 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
             ctrl.estimatedWeighByAge[age] = {male:estimatedMaleWeight, female: estimatedFemaleWeight};
         }
     }
-
+    
     ctrl.applyMale = function() {
         ctrl.weight = ctrl.esitmatedMaleWeight;
+    };
+
+    ctrl.applyMaleRounded = function() {
+        ctrl.weight = Math.ceil(ctrl.esitmatedMaleWeight);
+    };
+
+    ctrl.applyFemaleRounded = function() {
+        ctrl.weight = Math.ceil(ctrl.esitmatedFemaleWeight);
     };
 
     ctrl.applyFemale = function() {
@@ -97,6 +105,13 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
             return "24 month";
         }
         return ctrl.age + (ctrl.ageScale == 'YEARS' ? " year" : " month");
+    }
+
+    ctrl.shouldWarnOnWeight = function() {
+        if (!!ctrl.age && !!ctrl.weight && !!ctrl.esitmatedFemaleWeight) {
+            return ctrl.weight > 2.5 * ctrl.esitmatedFemaleWeight;
+        }
+        return false;
     }
 
     ctrl.changedValue = function() {   
