@@ -83,13 +83,13 @@
         {
             "name": "Drips",
             "drugs": [
-                {"name": "Adrenaline", "howToGive": "IV          to get ","dose": 0.1, "kg": "mcg/Kg/min=1ml/Hr add", "dose_2": "dose*weight*60*50/1000", "dose_2_unit": "mg", "volume": " \"in 50 ml\"", "of": "0.05-1 mcg/Kg/min"},
-                {"name": "Noradrenline", "howToGive": "IV          to get ","dose": 0.1, "kg": "mcg/Kg/min=1ml/Hr add", "dose_2": "dose*weight*60*50/1000", "dose_2_unit": "mg", "volume": " \"in 50 ml\"", "of": "0.05-1 mcg/Kg/min"},
-                {"name": "Dopamine", "howToGive": "IV          to get ","dose": 5, "kg": "mcg/Kg/min=1ml/Hr add", "dose_2": "dose*weight*60*50/1000", "dose_2_unit": "mg", "volume": " \"in 50 ml\"", "of": "2-20 mcg/Kg/min"},
-                {"name": "Prostaglandin E1", "howToGive": "IV          to get ","dose": 0.05, "kg": "mcg/Kg/min=0.5ml/Hr add", "dose_2": "dose*weight*60*20/0.5", "dose_2_unit": "mcg", "volume": " \"in 20 ml\"", "of": "0.01-0.1 mcg/Kg/min"},
-                {"name": "Morphine", "howToGive": "IV          to get ","dose": 0.1, "kg": "mg/Kg/Hr=1ml/Hr add", "dose_2": "dose*50*weight", "dose_2_unit": "mg", "volume": " \"in 50 ml\"", "of": "0.1-0.5 mg/Kg/Hr"},
-                {"name": "Midazolam ", "howToGive": "IV          to get ","dose": 0.1, "kg": "mg/Kg/Hr=1ml/Hr  add", "dose_2": "dose*50*weight", "dose_2_unit": "mg", "volume": " \"in 50 ml\"", "of": "0.1-0.4 mg/Kg/Hr"},
-                {"name": "Propofol 10%", "howToGive": "IV          to get ","dose": 1, "kg": "mg/Kg/Hr give", "dose_2": "dose*0.1*weight", "dose_2_unit": "ml/Hr", "volume": " \"of 10 mg/ml\"", "of": "1-4 mg/kg/Hr"}
+                {"name": "Adrenaline", "howToGive": "IV","dose": 0.1, "kg": "mcg/Kg/min=1ml/Hr add", "dose_2": "dose*weight*60*50/1000", "dose_2_unit": "mg", "volume": " \"in 50 ml\"", "of": "0.05-1 mcg/Kg/min"},
+                {"name": "Noradrenline", "howToGive": "IV","dose": 0.1, "kg": "mcg/Kg/min=1ml/Hr add", "dose_2": "dose*weight*60*50/1000", "dose_2_unit": "mg", "volume": " \"in 50 ml\"", "of": "0.05-1 mcg/Kg/min"},
+                {"name": "Dopamine", "howToGive": "IV","dose": 5, "kg": "mcg/Kg/min=1ml/Hr add", "dose_2": "dose*weight*60*50/1000", "dose_2_unit": "mg", "volume": " \"in 50 ml\"", "of": "2-20 mcg/Kg/min"},
+                {"name": "Prostaglandin E1", "howToGive": "IV","dose": 0.05, "kg": "mcg/Kg/min=0.5ml/Hr add", "dose_2": "dose*weight*60*20/0.5", "dose_2_unit": "mcg", "volume": " \"in 20 ml\"", "of": "0.01-0.1 mcg/Kg/min"},
+                {"name": "Morphine", "howToGive": "IV","dose": 0.1, "kg": "mg/Kg/Hr=1ml/Hr add", "dose_2": "dose*50*weight", "dose_2_unit": "mg", "volume": " \"in 50 ml\"", "of": "0.1-0.5 mg/Kg/Hr"},
+                {"name": "Midazolam ", "howToGive": "IV","dose": 0.1, "kg": "mg/Kg/Hr=1ml/Hr  add", "dose_2": "dose*50*weight", "dose_2_unit": "mg", "volume": " \"in 50 ml\"", "of": "0.1-0.4 mg/Kg/Hr"},
+                {"name": "Propofol 10%", "howToGive": "IV","dose": 1, "kg": "mg/Kg/Hr give", "dose_2": "dose*0.1*weight", "dose_2_unit": "ml/Hr", "volume": " \"of 10 mg/ml\"", "of": "1-4 mg/kg/Hr"}
             ]
         } 
     ]
