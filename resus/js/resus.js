@@ -38,8 +38,8 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     ctrl.drugsData = {};
     ctrl.agesFroDropDown = [];
     ctrl.airwaysData = {};
-    ctrl.dripsDefinitions = [];
-    ctrl.calculatedDrips = [];
+    ctrl.dripsDefinitions = {};
+    ctrl.dripsInstructions = {};
     ctrl.airwaysForAge = {};
     ctrl.estimatedWeighByAge = {};
     ctrl.esitmatedMaleWeight = "";
@@ -56,10 +56,46 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
             createDropDownData();
         });        
         $http.get('/resus/data/drips.json').then(function(response) {
-            ctrl.dripsDefinitions = response.data.drugs;
+            items = response.data.drugs;
+            ctrl.dripsDefinitions = items.reduce((acc, item) => {
+                // Destructure the item to separate the name from the other attributes
+                let { name, ...attributes } = item;
+                // Add the name as the key and the other attributes as the value
+                attributes.name = name;
+                acc[name] = attributes;
+                return acc;
+            }, {});
         });
 
     };    
+
+    ctrl.dripInstructions = function(drugName) {
+        return ctrl.dripsInstructions[drugName];
+    }
+    
+    ctrl.dripDefinition = function(drugName) {
+        return ctrl.dripsDefinitions[drugName];
+    }
+
+    function createTooltipMessage(drugDefintion, caseInstruction, childKg){
+        let tooltip = `${drugDefintion.name}: Data used for calculation: `;
+        if (drugDefintion.dose_per_kg_per_min){
+            tooltip += `Dose speed ${drugDefintion.dose_per_kg_per_min} ${drugDefintion.dose_unit}/Kg/min=${drugDefintion.default_dilution_volume_ml}ml/Hr. `;
+        }
+        else if (drugDefintion.dose_per_kg_per_hour){
+            tooltip += `Dose speed: ${drugDefintion.dose_per_kg_per_hour} ${drugDefintion.dose_unit}/Kg/Hr=${drugDefintion.default_dilution_volume_ml}ml/Hr. `;
+        }
+        else{
+            tooltip = "no data...";
+        }
+        tooltip += `Child Weight: ${childKg}Kg. Total dose before dilution=${caseInstruction.doseBeforeDilution} ${caseInstruction.unitsBeforeDilution}. 
+        Dilution of ${drugDefintion.default_dilution_volume_ml}ml and target of ${drugDefintion.target_volume_ml_per_hour}ml/Hr
+        you need to add: ${caseInstruction.doseForDilution} ${caseInstruction.unitsForDilution} in ${drugDefintion.default_dilution_volume_ml}ml.
+        Notice: Allowed Range is :${drugDefintion.allowed_dose_range}`;
+    
+        return tooltip;
+    }
+    
 
     function createDropDownData(){
         const ages = ctrl.airwaysData.dataByAge.map(item => item.age);
@@ -103,6 +139,8 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         }
     };
 
+
+
     ctrl.ageAsInTable = function() {
         if (ctrl.age == 1 && ctrl.ageScale == 'YEARS') {
             return "12 month";
@@ -134,9 +172,9 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
             if (ctrl.age == currData.age) {
                 ctrl.airwaysForAge = currData;
 
-                // if (ctrl.weight) {
-                //     ctrl.calculatedDrips = calcDrips(ctrl.dripsDefinitions, ctrl.weight);
-                // }
+                if (ctrl.weight) {
+                    ctrl.dripsInstructions = calcDripsInstructionDict(Object.values(ctrl.dripsDefinitions), ctrl.weight);
+                }
                 return;
             }
         }
@@ -270,6 +308,15 @@ app.directive('drugs', function() {
     return {
         restrict: 'E',
         templateUrl: 'htmls/drugs.html',
+        link: function(scope, element, attrs) {
+        }
+    };
+});
+
+app.directive('drips', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'htmls/drips.html',
         link: function(scope, element, attrs) {
         }
     };

@@ -67,13 +67,13 @@
             "name": "Incresed ICP",
             "drugs": [
                 {"name": "Manitol", "howToGive": "IV","dose": 1, "kg": "gram/Kg(0.5-1)", "dose_2": "dose*weight", "dose_2_unit": "gr", "volume": "dose*weight*5", "of": "of Manitol 20%"},
-                {"name": "NACL 3% ", "howToGive": "IV","dose": 5, "kg": "ml/kg", "dose_2": "", "dose_2_unit": "", "volume": "dose*weight", "of": "of NACL3%"}
+                {"name": "NACL 3%", "howToGive": "IV","dose": 5, "kg": "ml/kg", "dose_2": "", "dose_2_unit": "", "volume": "dose*weight", "of": "of NACL3%"}
             ]
         },
         {
             "name": "Antidotes",
             "drugs": [
-                {"name": "Naloxone ", "howToGive": "IV","dose": 0.1, "kg": "mg/Kg (up to 4 doses)", "dose_2": "Math.min(dose*weight,2)", "dose_2_unit": "mg", "volume": "dose_2*1/0.4", "of": "of 0.4 mg/ml"},
+                {"name": "Naloxone", "howToGive": "IV","dose": 0.1, "kg": "mg/Kg (up to 4 doses)", "dose_2": "Math.min(dose*weight,2)", "dose_2_unit": "mg", "volume": "dose_2*1/0.4", "of": "of 0.4 mg/ml"},
                 {"name": "Flumazenil", "howToGive": "IV","dose": 0.01, "kg": "mg/Kg", "dose_2": "Math.min(dose*weight,0.2)", "dose_2_unit": "mg", "volume": "dose_2*5/0.5", "of": "of 0.5 mg/5 ml"},
                 {"name": "Sugammadex", "howToGive": "IV","dose": 16, "kg": "mg/Kg", "dose_2": "dose*weight", "dose_2_unit": "mg", "volume": "dose_2*1/100", "of": "of 100 mg/ml"},
                 {"name": "Charcoal ", "howToGive": "PO","dose": 1, "kg": "gr/Kg(0.5-1)", "dose_2": "Math.min(dose*weight,100)", "dose_2_unit": "gr", "volume": "dose_2*250/50", "of": "of 50 gram/250 ml"}
@@ -88,7 +88,7 @@
                 {"name": "Dopamine", "howToGive": "IV","dose": 5, "kg": "mcg/Kg/min=1ml/Hr add", "dose_2": "dose*weight*60*50/1000", "dose_2_unit": "mg", "volume": " \"in 50 ml\"", "of": "2-20 mcg/Kg/min"},
                 {"name": "Prostaglandin E1", "howToGive": "IV","dose": 0.05, "kg": "mcg/Kg/min=0.5ml/Hr add", "dose_2": "dose*weight*60*20/0.5", "dose_2_unit": "mcg", "volume": " \"in 20 ml\"", "of": "0.01-0.1 mcg/Kg/min"},
                 {"name": "Morphine", "howToGive": "IV","dose": 0.1, "kg": "mg/Kg/Hr=1ml/Hr add", "dose_2": "dose*50*weight", "dose_2_unit": "mg", "volume": " \"in 50 ml\"", "of": "0.1-0.5 mg/Kg/Hr"},
-                {"name": "Midazolam ", "howToGive": "IV","dose": 0.1, "kg": "mg/Kg/Hr=1ml/Hr  add", "dose_2": "dose*50*weight", "dose_2_unit": "mg", "volume": " \"in 50 ml\"", "of": "0.1-0.4 mg/Kg/Hr"},
+                {"name": "Midazolam", "howToGive": "IV","dose": 0.1, "kg": "mg/Kg/Hr=1ml/Hr  add", "dose_2": "dose*50*weight", "dose_2_unit": "mg", "volume": " \"in 50 ml\"", "of": "0.1-0.4 mg/Kg/Hr"},
                 {"name": "Propofol 10%", "howToGive": "IV","dose": 1, "kg": "mg/Kg/Hr give", "dose_2": "dose*0.1*weight", "dose_2_unit": "ml/Hr", "volume": " \"of 10 mg/ml\"", "of": "1-4 mg/kg/Hr"}
             ]
         } 

@@ -17,8 +17,12 @@ function calcDilutionPerKg(drugData, kg){
     const dose_to_add = (drugData.default_dilution_volume_ml / drugData.target_volume_ml_per_hour) * dosePerKg;
     const {dose: doseForDilution, units: unitsForDilution} = prettifyUnits(dose_to_add, drugData.dose_unit);
     const {dose: doseBeforeDilution, units: unitsBeforeDilution} = prettifyUnits(dosePerKg, drugData.dose_unit);
-    return { doseBeforeDilution, unitsBeforeDilution, doseForDilution, unitsForDilution};
+    return { doseBeforeDilution: formatNumber(doseBeforeDilution), unitsBeforeDilution, doseForDilution: formatNumber(doseForDilution), unitsForDilution};
     
+}
+
+function formatNumber(num) {
+    return parseFloat(num.toFixed(2));
 }
 
 function prettifyUnits(dose, units){
@@ -41,48 +45,6 @@ function calcDripsInstructionDict(dripDefinitions, childKg){
     return dripsInstructionsDict;
 }
 
-function prettifyDripsPrint(dripDefinitions, dripsInstructionsDict, childKg){
-    UIDripsData = {};
-    for (i = 0; i < dripDefinitions.length; ++i) {
-        if (dripDefinitions[i].name in dripsInstructionsDict) {
-            UIDripsData[dripDefinitions[i].name] = 
-                {
-                    tableMessage: createDripTableMessage(dripDefinitions[i], dripsInstructionsDict[dripDefinitions[i].name], childKg),
-                    tooltipMessage: createTooltipMessage(dripDefinitions[i], dripsInstructionsDict[dripDefinitions[i].name], childKg)
-                }
-        }   
-    }
-    return UIDripsData;
-}
-
-function createDripTableMessage(drugDefintion, caseInstruction){
-    return `${drugDefintion.name}: add ${caseInstruction.doseForDilution} ${caseInstruction.unitsForDilution} in ${drugDefintion.default_dilution_volume_ml} ml`;
-}
-
-function createTooltipMessage(drugDefintion, caseInstruction, childKg){
-    let tooltip = `${drugDefintion.name}: Data used for calculation: `;
-    if (drugDefintion.dose_per_kg_per_min){
-        tooltip += `Dose speed ${drugDefintion.dose_per_kg_per_min} ${drugDefintion.dose_unit}/Kg/min=${drugDefintion.default_dilution_volume_ml}ml/Hr. `;
-    }
-    else if (drugDefintion.dose_per_kg_per_hour){
-        tooltip += `Dose speed: ${drugDefintion.dose_per_kg_per_hour} ${drugDefintion.dose_unit}/Kg/Hr=${drugDefintion.default_dilution_volume_ml}ml/Hr. `;
-    }
-    else{
-        tooltip = "no data...";
-    }
-    tooltip += `Child Weight: ${childKg}Kg. Total dose before dilution=${caseInstruction.doseBeforeDilution} ${caseInstruction.unitsBeforeDilution}. 
-    Dilution of ${drugDefintion.default_dilution_volume_ml}ml and target of ${drugDefintion.target_volume_ml_per_hour}ml/Hr
-    you need to add: ${caseInstruction.doseForDilution} ${caseInstruction.unitsForDilution} in ${drugDefintion.default_dilution_volume_ml}ml.
-    Notice: Allowed Range is :${drugDefintion.allowed_dose_range}`;
-
-    return tooltip;
-}
-
-
-function calcDrips(dripDefinitions, childKg){
-    dict = calcDripsInstructionDict(dripDefinitions, childKg);
-    return prettifyDripsPrint(dripDefinitions, dict, childKg);
-}
 
 
 
