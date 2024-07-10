@@ -38,6 +38,8 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     ctrl.drugsData = {};
     ctrl.agesFroDropDown = [];
     ctrl.airwaysData = {};
+    ctrl.dripsDefinitions = [];
+    ctrl.calculatedDrips = [];
     ctrl.airwaysForAge = {};
     ctrl.estimatedWeighByAge = {};
     ctrl.esitmatedMaleWeight = "";
@@ -53,6 +55,10 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
             parseRawDataToEstimatedWeights();
             createDropDownData();
         });        
+        $http.get('/resus/data/drips.json').then(function(response) {
+            ctrl.dripsDefinitions = response.data.drugs;
+        });
+
     };    
 
     function createDropDownData(){
@@ -127,6 +133,10 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
             const currData = ctrl.airwaysData.dataByAge[i];
             if (ctrl.age == currData.age) {
                 ctrl.airwaysForAge = currData;
+
+                // if (ctrl.weight) {
+                //     ctrl.calculatedDrips = calcDrips(ctrl.dripsDefinitions, ctrl.weight);
+                // }
                 return;
             }
         }
