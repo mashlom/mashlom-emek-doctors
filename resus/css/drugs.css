@@ -14,12 +14,13 @@
     position: absolute;
     top: 0%;
     left: 50%;
+    width: 80%;
     transform: translateX(-50%);
     background-color: #B9EDE7;
     color: black;
     padding: 8px;
     border-radius: 15px;
-    white-space: nowrap;
+    white-space: normal;
     z-index: 1000;
   }
 
