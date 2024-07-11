@@ -5,7 +5,7 @@
         "howToGive": "IV",
         "dose_per_kg_per_min": 0.1,
         "dose_unit": "mcg",
-        "allowed_dose_range": "0.05-1 mcg/KG/min",
+        "allowed_dose_range": "0.05-1 mcg/KG/min",  
         "default_dilution_volume_ml": 50,
         "default_dilution_volume_unit": "ml",
         "target_volume_ml_per_hour": 1
