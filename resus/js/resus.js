@@ -139,6 +139,10 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         }
     };
 
+    ctrl.replaceSpacesWithUnderline = function(str){
+        return str.replace(/ /g,"_");
+    }
+
 
 
     ctrl.ageAsInTable = function() {

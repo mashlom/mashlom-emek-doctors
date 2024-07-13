@@ -150,3 +150,20 @@ h1 {
   --bs-table-bg-type: #ebf7ff;
   --bs-table-striped-bg: #ebf7ff;  
 }
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #B9EDE7;
+}
+.modal-title {
+  flex-grow: 1;
+  text-align: right;
+  font-size: 1rem;
+}
+.btn-close {
+  margin-left: auto;
+  position: absolute;
+  left: 10px;
+}

@@ -5,10 +5,10 @@
             "drugs": [
                 {"name": "Adrenaline 1:10,000 ", "howToGive": "IV רק בהחייאה ","dose": 0.01, "kg": "mg/Kg", "dose_2": "Math.min(dose*weight,1)", "dose_2_unit": "mg", "volume": "dose_2*10/1", "of": "of 1:10,000"},
                 {"name": "Atropine 1:10,000", "howToGive": "IV","dose": 0.02, "kg": "mg/Kg", "dose_2": "Math.min(Math.max(dose*weight,0.1),1)", "dose_2_unit": "mg", "volume": "dose_2*10/1", "of": "of 1:10,000"},
-                {"name": "Amiodarone ", "howToGive": "IV רק בהחייאה ","dose": 5, "kg": "mg/Kg", "dose_2": "Math.min(dose*weight,300)", "dose_2_unit": "mg", "volume": "dose_2*1/50", "of": "of 50 mg/ml"},
+                {"name": "Amiodarone", "howToGive": "IV רק בהחייאה ","dose": 5, "kg": "mg/Kg", "dose_2": "Math.min(dose*weight,300)", "dose_2_unit": "mg", "volume": "dose_2*1/50", "of": "of 50 mg/ml"},
                 {"name": "Lidocaine", "howToGive": "IV רק בהחייאה ","dose": 1, "kg": "mg/Kg over 2-4 min", "dose_2": "dose*weight", "dose_2_unit": "mg", "volume": "dose_2*1/10", "of": "of 10 mg/ml"},
                 {"name": "Magnesium Sulfate", "howToGive": "IV רק בהחייאה","dose": 50, "kg": "mg/Kg(25-50)", "dose_2": "Math.min(dose*weight,2000)", "dose_2_unit": "mg", "volume": "dose_2*1/500", "of": "of 50% (500 mg/ml)"},
-                {"name": "Calcium gluconate ", "howToGive": "IV רק בהחייאה ","dose": 100, "kg": "mg/Kg(1ml/kg)", "dose_2": "dose*weight", "dose_2_unit": "mg", "volume": "dose_2*1/100", "of": "of 10% "},
+                {"name": "Calcium gluconate", "howToGive": "IV רק בהחייאה ","dose": 100, "kg": "mg/Kg(1ml/kg)", "dose_2": "dose*weight", "dose_2_unit": "mg", "volume": "dose_2*1/100", "of": "of 10% "},
                 {"name": "Sodium Bicarbonate", "howToGive": "IV רק בהחייאה  ","dose": 1, "kg": "meq/Kg(1ml/kg)", "dose_2": "dose*weight", "dose_2_unit": "meq", "volume": "dose_2", "of": "of 8.4% "},
                 {"name": "Dextrose 10%", "howToGive": "IV","dose": 0.2, "kg": "gr/Kg(2ml/Kg)", "dose_2": "dose*weight", "dose_2_unit": "gr", "volume": "dose_2*100/10", "of": "of Dextrose 10%"},
                 {"name": "Dextrose 25%", "howToGive": "IV","dose": 0.2, "kg": "gr/Kg(0.8ml/Kg)", "dose_2": "dose*weight", "dose_2_unit": "gr", "volume": "dose_2*100/25", "of": "of Dextrose 25%"}
@@ -19,7 +19,7 @@
             "drugs": [
                 {"name": "Ketamin", "howToGive": "IV","dose": 1, "kg": "mg/Kg(0.5-2)", "dose_2": "dose*weight", "dose_2_unit": "mg", "volume": "dose_2*1/10", "of": "of 10 mg/ml"},
                 {"name": "Propofol", "howToGive": "IV ","dose": 1, "kg": "mg/Kg (0.5-3)", "dose_2": "dose*weight", "dose_2_unit": "mg", "volume": "dose_2*1/10", "of": "of 10 mg/ml"},
-                {"name": "Etomidate ", "howToGive": "IV","dose": 0.3, "kg": "mg/Kg(0.2-0.6)", "dose_2": "Math.min(dose*weight,20)", "dose_2_unit": "mg", "volume": "dose_2*10/20", "of": "of 20 mg/10ml "},
+                {"name": "Etomidate", "howToGive": "IV","dose": 0.3, "kg": "mg/Kg(0.2-0.6)", "dose_2": "Math.min(dose*weight,20)", "dose_2_unit": "mg", "volume": "dose_2*10/20", "of": "of 20 mg/10ml "},
                 {"name": "Fentanyl", "howToGive": "IV","dose": 1, "kg": "mcg/Kg", "dose_2": "Math.min(dose*weight,100)", "dose_2_unit": "mcg", "volume": "dose_2*1/50", "of": "of 50 mcg/ml"},
                 {"name": "Midazolam", "howToGive": "IV","dose": 0.1, "kg": "mg/Kg", "dose_2": "dose*weight", "dose_2_unit": "mg", "volume": "dose_2", "of": "of 1 mg/ml"}                
             ]
@@ -55,7 +55,7 @@
         {
             "name": "Convulsions",
             "drugs": [
-                {"name": "Midazolam", "howToGive": "INTRANASAL","dose": 0.5, "kg": "mg/Kg", "dose_2": "Math.min(dose*weight,10)", "dose_2_unit": "mg", "volume": "dose_2*1/5", "of": "of 5 mg/ml"},
+                {"name": "Midazolam INTRANASAL", "howToGive": "","dose": 0.5, "kg": "mg/Kg", "dose_2": "Math.min(dose*weight,10)", "dose_2_unit": "mg", "volume": "dose_2*1/5", "of": "of 5 mg/ml"},
                 {"name": "Keppra", "howToGive": "IV","dose": 40, "kg": "mg/Kg(40-60)", "dose_2": "Math.min(dose*weight,4500)", "dose_2_unit": "mg", "volume": "", "of": ""},
                 {"name": "Phenytoin", "howToGive": "IV","dose": 20, "kg": "mg/Kg", "dose_2": "Math.min(dose*weight,1000)", "dose_2_unit": "mg", "volume": "", "of": ""},
                 {"name": "Phenobarbitone", "howToGive": "IV","dose": 20, "kg": "mg/Kg", "dose_2": "Math.min(dose*weight,1000)", "dose_2_unit": "mg", "volume": "", "of": ""},
@@ -76,7 +76,7 @@
                 {"name": "Naloxone", "howToGive": "IV","dose": 0.1, "kg": "mg/Kg (up to 4 doses)", "dose_2": "Math.min(dose*weight,2)", "dose_2_unit": "mg", "volume": "dose_2*1/0.4", "of": "of 0.4 mg/ml"},
                 {"name": "Flumazenil", "howToGive": "IV","dose": 0.01, "kg": "mg/Kg", "dose_2": "Math.min(dose*weight,0.2)", "dose_2_unit": "mg", "volume": "dose_2*5/0.5", "of": "of 0.5 mg/5 ml"},
                 {"name": "Sugammadex", "howToGive": "IV","dose": 16, "kg": "mg/Kg", "dose_2": "dose*weight", "dose_2_unit": "mg", "volume": "dose_2*1/100", "of": "of 100 mg/ml"},
-                {"name": "Charcoal ", "howToGive": "PO","dose": 1, "kg": "gr/Kg(0.5-1)", "dose_2": "Math.min(dose*weight,100)", "dose_2_unit": "gr", "volume": "dose_2*250/50", "of": "of 50 gram/250 ml"}
+                {"name": "Charcoal", "howToGive": "PO","dose": 1, "kg": "gr/Kg(0.5-1)", "dose_2": "Math.min(dose*weight,100)", "dose_2_unit": "gr", "volume": "dose_2*250/50", "of": "of 50 gram/250 ml"}
             ]
         }
         ,

@@ -11,16 +11,31 @@
                 ({{ctrl.dripDefinition(drug.name).target_volume_ml_per_hour}}ml/Hr)
 
             </span>
-            <i class="fa-solid fa-circle-info"  style="margin-left: 10px; cursor: pointer;" ng-click="ctrl.toggleTooltip(section.name+drug.name)"></i>
-            <div class="tooltip-not-bootstrap" ng-if="ctrl.tooltipIndex === section.name+drug.name">
-                <button class="tooltip-close" ng-click="ctrl.closeTooltip()"><b>&times;</b></button><br>
-                <b>{{drug.name}} Calculation Details:</b> <br>
-                Intravenous speed<b>:</b> {{ctrl.dripDefinition(drug.name).dose_per_kg_per_min != null && ctrl.dripDefinition(drug.name).dose_per_kg_per_min != undefined ? ctrl.dripDefinition(drug.name).dose_per_kg_per_min : ctrl.dripDefinition(drug.name).dose_per_kg_per_hour}} {{ctrl.dripDefinition(drug.name).dose_unit}}/Kg/{{ (ctrl.dripDefinition(drug.name).dose_per_kg_per_min) ? 'min' : 'Hr' }}={{ctrl.dripDefinition(drug.name).target_volume_ml_per_hour}}ml/Hr <br>
-                Child weight<b>:</b> {{ctrl.weight}}Kg <br> Total dose by weight for an hour<b>:</b> {{ctrl.dripInstructions(drug.name).doseBeforeDilution}} {{ctrl.dripInstructions(drug.name).unitsBeforeDilution}} = ({{ctrl.dripDefinition(drug.name).dose_per_kg_per_min}}*{{ctrl.weight}}*60 minutes) <br>
-                For dilution in <b>{{ctrl.dripDefinition(drug.name).default_dilution_volume_ml}}ml</b> you need to add <b>{{ctrl.dripInstructions(drug.name).doseForDilution}} {{ctrl.dripInstructions(drug.name).unitsForDilution}}</b> = ({{ctrl.dripInstructions(drug.name).doseBeforeDilution}}*{{ctrl.dripDefinition(drug.name).default_dilution_volume_ml}}) <br>
-                <b>Notice</b> allowed speed range<b>:</b> {{ctrl.dripDefinition(drug.name).allowed_dose_range}}
-            </div>
+            <i class="fa-solid fa-circle-info"  style="margin-left: 10px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#infoModal1_{{ctrl.replaceSpacesWithUnderline(section.name+drug.name)}}"></i>
+            <div class="modal fade" id="infoModal1_{{ctrl.replaceSpacesWithUnderline(section.name+drug.name)}}" tabindex="-1" aria-labelledby="infoModalLabel1" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header green">
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      <h5 class="modal-title" id="infoModalLabel1"><b>{{drug.name}}</b> Calculation Details:</h5>
+                    </div>
+                    <div class="modal-body">
+                        Intravenous speed<b>:</b> {{ctrl.dripDefinition(drug.name).dose_per_kg_per_min != null && ctrl.dripDefinition(drug.name).dose_per_kg_per_min != undefined ? ctrl.dripDefinition(drug.name).dose_per_kg_per_min : ctrl.dripDefinition(drug.name).dose_per_kg_per_hour}} {{ctrl.dripDefinition(drug.name).dose_unit}}/Kg/{{ (ctrl.dripDefinition(drug.name).dose_per_kg_per_min) ? 'min' : 'Hr' }}={{ctrl.dripDefinition(drug.name).target_volume_ml_per_hour}}ml/Hr <br>
+                        Child weight<b>:</b> {{ctrl.weight}}Kg <br> Total dose by weight for an hour<b>:</b> {{ctrl.dripInstructions(drug.name).doseBeforeDilution}} {{ctrl.dripInstructions(drug.name).unitsBeforeDilution}} = ({{ctrl.dripDefinition(drug.name).dose_per_kg_per_min}}*{{ctrl.weight}}*60 minutes) <br>
+                        For dilution in <b>{{ctrl.dripDefinition(drug.name).default_dilution_volume_ml}}ml</b> you need to add <b>{{ctrl.dripInstructions(drug.name).doseForDilution}} {{ctrl.dripInstructions(drug.name).unitsForDilution}}</b> = ({{ctrl.dripInstructions(drug.name).doseBeforeDilution}}*{{ctrl.dripDefinition(drug.name).default_dilution_volume_ml}}) <br>
+                        <b>Notice</b> allowed speed range<b>:</b> {{ctrl.dripDefinition(drug.name).allowed_dose_range}}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
         </li>
       </ul>  
 </div>
+
+<!-- <div class="modal-body">
+    קצב עירוי <b>:</b> {{ctrl.dripDefinition(drug.name).dose_per_kg_per_min != null && ctrl.dripDefinition(drug.name).dose_per_kg_per_min != undefined ? ctrl.dripDefinition(drug.name).dose_per_kg_per_min : ctrl.dripDefinition(drug.name).dose_per_kg_per_hour}} {{ctrl.dripDefinition(drug.name).dose_unit}}/Kg/{{ (ctrl.dripDefinition(drug.name).dose_per_kg_per_min) ? 'min' : 'Hr' }}={{ctrl.dripDefinition(drug.name).target_volume_ml_per_hour}}ml/Hr <br>
+    משקל ילד<b>:</b> {{ctrl.weight}}ק"ג <br> Total dose by weight for an hour<b>:</b> {{ctrl.dripInstructions(drug.name).doseBeforeDilution}} {{ctrl.dripInstructions(drug.name).unitsBeforeDilution}} = ({{ctrl.dripDefinition(drug.name).dose_per_kg_per_min}}*{{ctrl.weight}}*60 minutes) <br>
+    עבור דילול ב <b>{{ctrl.dripDefinition(drug.name).default_dilution_volume_ml}}ml</b>מים, יש להוסיף  <b>{{ctrl.dripInstructions(drug.name).doseForDilution}} {{ctrl.dripInstructions(drug.name).unitsForDilution}}</b> = ({{ctrl.dripInstructions(drug.name).doseBeforeDilution}}*{{ctrl.dripDefinition(drug.name).default_dilution_volume_ml}}) <br>
+    <b>שים לב</b> טווח קצב עירוי מותר<b>:</b> {{ctrl.dripDefinition(drug.name).allowed_dose_range}}
+</div> -->
