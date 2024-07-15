@@ -20,10 +20,10 @@
                       <h5 class="modal-title" id="infoModalLabel1"><b>{{drug.name}}</b> Calculation Details:</h5>
                     </div>
                     <div class="modal-body">
-                        Intravenous speed<b>:</b> {{ctrl.dripDefinition(drug.name).dose_per_kg_per_min != null && ctrl.dripDefinition(drug.name).dose_per_kg_per_min != undefined ? ctrl.dripDefinition(drug.name).dose_per_kg_per_min : ctrl.dripDefinition(drug.name).dose_per_kg_per_hour}} {{ctrl.dripDefinition(drug.name).dose_unit}}/Kg/{{ (ctrl.dripDefinition(drug.name).dose_per_kg_per_min) ? 'min' : 'Hr' }}={{ctrl.dripDefinition(drug.name).target_volume_ml_per_hour}}ml/Hr <br>
-                        Child weight<b>:</b> {{ctrl.weight}}Kg <br> Total dose by weight for an hour<b>:</b> {{ctrl.dripInstructions(drug.name).doseBeforeDilution}} {{ctrl.dripInstructions(drug.name).unitsBeforeDilution}} = ({{ctrl.dripDefinition(drug.name).dose_per_kg_per_min}}*{{ctrl.weight}}*60 minutes) <br>
+                        Intravenous speed is {{ctrl.dripDefinition(drug.name).dose_per_kg_per_min != null && ctrl.dripDefinition(drug.name).dose_per_kg_per_min != undefined ? ctrl.dripDefinition(drug.name).dose_per_kg_per_min : ctrl.dripDefinition(drug.name).dose_per_kg_per_hour}} {{ctrl.dripDefinition(drug.name).dose_unit}}/Kg/{{ (ctrl.dripDefinition(drug.name).dose_per_kg_per_min) ? 'min' : 'Hr' }}={{ctrl.dripDefinition(drug.name).target_volume_ml_per_hour}}ml/Hr <br>
+                        Child weight is {{ctrl.weight}}Kg <br> Total dose by weight for an hour is {{ctrl.dripInstructions(drug.name).doseBeforeDilution}} {{ctrl.dripInstructions(drug.name).unitsBeforeDilution}} = ({{ctrl.dripDefinition(drug.name).dose_per_kg_per_min}}*{{ctrl.weight}}*60 minutes) <br>
                         For dilution in <b>{{ctrl.dripDefinition(drug.name).default_dilution_volume_ml}}ml</b> you need to add <b>{{ctrl.dripInstructions(drug.name).doseForDilution}} {{ctrl.dripInstructions(drug.name).unitsForDilution}}</b> = ({{ctrl.dripInstructions(drug.name).doseBeforeDilution}}*{{ctrl.dripDefinition(drug.name).default_dilution_volume_ml}}) <br>
-                        <b>Notice</b> allowed speed range<b>:</b> {{ctrl.dripDefinition(drug.name).allowed_dose_range}}
+                        <b>Notice</b> allowed speed range is {{ctrl.dripDefinition(drug.name).allowed_dose_range}}
                     </div>
                   </div>
                 </div>

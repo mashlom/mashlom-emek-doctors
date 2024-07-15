@@ -5,6 +5,9 @@
         <div style="display: flex; justify-content: space-between; text-align: left; color: var(--page-font-color);">
             <span>
                 {{drug.name}}: <b>{{ctrl.evalVolume(drug)}} ml</b> - <span ng-class="{'bold-text': drug.howToGive && drug.howToGive.trim() !== 'IV'}">{{drug.howToGive}}</span>
+                <div ng-if="drug.maxDose===ctrl.evalDose2(drug)">
+                  <span style="color:red;"><b>Used max dose of {{drug.maxDose}}&nbsp;{{drug.maxDoseUnit}}</b></span>
+                </div>        
             </span>
             <i class="fa-solid fa-circle-info"  style="margin-left: 10px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#infoModal1_{{ctrl.replaceSpacesWithUnderline(section.name+drug.name)}}"></i>
             <div class="modal fade" id="infoModal1_{{ctrl.replaceSpacesWithUnderline(section.name+drug.name)}}" tabindex="-1" aria-labelledby="infoModalLabel1" aria-hidden="true">
@@ -16,7 +19,7 @@
                     </div>
                     <div class="modal-body">
                         {{drug.name}} allowed ratio is {{drug.dose}} {{drug.kg}}.<br>
-                        Total dose for {{ctrl.weight}} KG is {{ctrl.evalDose2(drug)}} <br>
+                        Total dose for {{ctrl.weight}} KG is {{ctrl.evalDose2(drug)}} {{drug.dose_2_unit}} <br>
                         Drug density is {{drug.of.replace('of', '')}}.<br>
                         Volume is  {{ctrl.evalVolume(drug)}} ml = ({{ctrl.evalDose2(drug)}} {{drug.dose_2_unit}}) / ( {{drug.of.replace('of', '')}} )
                     </div>
