@@ -47,7 +47,8 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     ctrl.tooltipIndex = "";
 
     function init() {
-        $http.get('/resus/data/resus-drugs.json').then(function(response) {
+        // $http.get('/resus/data/resus-drugs.json').then(function(response) {
+        $http.get('/resus/data/resus-drugs-definitions.json').then(function(response) {
             ctrl.drugsData = response.data;
         });
         $http.get('/resus/data/airways.json').then(function(response) {
@@ -206,6 +207,18 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         return formatNumberValue(func(drug.dose, ctrl.weight, ctrl.evalDose2(drug)));
     };
 
+
+    ctrl.calcVolume = function(drugDefintion){
+        let doseByWeight = drugDefintion.dose_per_kg * ctrl.weight;
+        if (drugDefintion.maxDose){
+            doseByWeight = Math.min(drugDefintion.maxDose, doseByWeight);
+        }
+        const [numerator, denominator] = drugDefintion.density.split('/').map(Number);
+        const density = numerator / denominator;
+
+        return formatNumberValue(doseByWeight / density);
+    }
+    
     ctrl.selectSex = function(sex) {
         ctrl.sex = sex;
         if (!ctrl.airwaysForAge || !ctrl.sex) {

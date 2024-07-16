@@ -5,6 +5,7 @@
         <div style="display: flex; justify-content: space-between; text-align: left; color: var(--page-font-color);">
             <span>
                 {{drug.name}}: <b>{{ctrl.evalVolume(drug)}} ml</b> - <span ng-class="{'bold-text': drug.howToGive && drug.howToGive.trim() !== 'IV'}">{{drug.howToGive}}</span>
+                <br>Self Calculate Volume {{ctrl.calcVolume(drug)}}
                 <div ng-if="drug.maxDose===ctrl.evalDose2(drug)">
                   <span style="color:red;"><b>Used max dose of {{drug.maxDose}}&nbsp;{{drug.maxDoseUnit}}</b></span>
                 </div>        
@@ -21,7 +22,7 @@
                         {{drug.name}} allowed ratio is {{drug.dose}} {{drug.kg}}.<br>
                         Total dose for {{ctrl.weight}} KG is {{ctrl.evalDose2(drug)}} {{drug.dose_2_unit}} <br>
                         Drug density is {{drug.of.replace('of', '')}}.<br>
-                        Volume is  {{ctrl.evalVolume(drug)}} ml = ({{ctrl.evalDose2(drug)}} {{drug.dose_2_unit}}) / ( {{drug.of.replace('of', '')}} )
+                        Volume is  {{ctrl.evalVolume(drug)}} ml = ({{ctrl.evalDose2(drug)}} {{drug.dose_2_unit}}) / ( {{drug.of.replace('of', '')}} ) <br>
                     </div>
                   </div>
                 </div>
