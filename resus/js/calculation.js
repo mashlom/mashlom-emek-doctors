@@ -17,8 +17,7 @@ function calcDilutionPerKg(drugData, kg){
     const dose_to_add = (drugData.default_dilution_volume_ml / drugData.target_volume_ml_per_hour) * dosePerKg;
     const {dose: doseForDilution, units: unitsForDilution} = prettifyUnits(dose_to_add, drugData.dose_unit);
     const {dose: doseBeforeDilution, units: unitsBeforeDilution} = prettifyUnits(dosePerKg, drugData.dose_unit);
-    return { doseBeforeDilution: formatNumber(doseBeforeDilution), unitsBeforeDilution, doseForDilution: formatNumber(doseForDilution), unitsForDilution};
-    
+    return { doseBeforeDilution: formatNumber(doseBeforeDilution), unitsBeforeDilution, doseForDilution: formatNumber(doseForDilution), unitsForDilution};    
 }
 
 function formatNumber(num) {
@@ -35,16 +34,6 @@ function prettifyUnits(dose, units){
         return {dose, units}
     }
 }
-
-function calcDripsInstructionDict(dripDefinitions, childKg){
-    let dripsInstructionsDict = {}
-    for (i = 0; i < dripDefinitions.length; ++i) {
-        dripsInstructionsDict[dripDefinitions[i].name] = calcDilutionPerKg(dripDefinitions[i], childKg);
-    }
-
-    return dripsInstructionsDict;
-}
-
 
 
 

@@ -47,7 +47,8 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     ctrl.tooltipIndex = "";
 
     function init() {
-        $http.get('/resus/data/resus-drugs.json').then(function(response) {
+        // $http.get('/resus/data/resus-drugs.json').then(function(response) {
+        $http.get('/resus/data/resus-drugs-definitions.json').then(function(response) {
             ctrl.drugsData = response.data;
         });
         $http.get('/resus/data/airways.json').then(function(response) {
@@ -56,15 +57,7 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
             createDropDownData();
         });        
         $http.get('/resus/data/drips.json').then(function(response) {
-            items = response.data.drugs;
-            ctrl.dripsDefinitions = items.reduce((acc, item) => {
-                // Destructure the item to separate the name from the other attributes
-                let { name, ...attributes } = item;
-                // Add the name as the key and the other attributes as the value
-                attributes.name = name;
-                acc[name] = attributes;
-                return acc;
-            }, {});
+            ctrl.dripsDefinitions = response.data.drugs;
         });
 
     };    
@@ -175,37 +168,43 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
             const currData = ctrl.airwaysData.dataByAge[i];
             if (ctrl.age == currData.age) {
                 ctrl.airwaysForAge = currData;
-
-                if (ctrl.weight) {
-                    ctrl.dripsInstructions = calcDripsInstructionDict(Object.values(ctrl.dripsDefinitions), ctrl.weight);
-                }
                 return;
             }
         }
+    };
+
+    ctrl.getDoseByTimeUnit = function(drip) {
+        return drip.dose_per_kg_per_min ?? drip.dose_per_kg_per_hour;
+    };
+
+    ctrl.calcDilutionPerKg = function(drip) {
+        return calcDilutionPerKg(drip, ctrl.weight);  
     };
 
     ctrl.closeTooltip = function() {
         ctrl.tooltipIndex = "";
     }
 
-    ctrl.evalDose2 = function(drug) {
-        if (!drug.dose_2) {
-            return "";
+    ctrl.getDoseByWeight = function(drugDefintion) {
+        let doseByWeight = drugDefintion.dose_per_kg * ctrl.weight;
+        if (drugDefintion.maxDose){
+            doseByWeight = Math.min(drugDefintion.maxDose, doseByWeight);
         }
-        var body = "return " + drug.dose_2 + ";";
-        var func = new Function("dose", "weight", body);
-        return formatNumberValue(func(drug.dose, ctrl.weight));
+        return doseByWeight.toFixed(2);
+    }
+
+    ctrl.splitRatio = function(ratio) {
+        return ratio.split('/').map(Number);
     };
 
-    ctrl.evalVolume = function(drug) {
-        if (!drug.volume) {
-            return "";
-        }
-        var body = "return " + drug.volume + ";"
-        var func = new Function("dose", "weight", "dose_2", body);
-        return formatNumberValue(func(drug.dose, ctrl.weight, ctrl.evalDose2(drug)));
-    };
+    ctrl.calcVolume = function(drugDefintion){
+        const doseByWeight = ctrl.getDoseByWeight(drugDefintion);
+        const [numerator, denominator] = ctrl.splitRatio(drugDefintion.concentration);
+        const concentration = numerator / denominator;
 
+        return formatNumberValue(doseByWeight / concentration);
+    };
+    
     ctrl.selectSex = function(sex) {
         ctrl.sex = sex;
         if (!ctrl.airwaysForAge || !ctrl.sex) {
