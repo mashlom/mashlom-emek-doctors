@@ -11,13 +11,13 @@
                 ({{drip.target_volume_ml_per_hour}}ml/Hr)
 
             </span>
-            <i class="fa-solid fa-circle-info"  style="margin-left: 10px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#infoModal1_{{ctrl.replaceSpacesWithUnderline('Drip'+drip.name)}}"></i>
-            <div class="modal fade" id="infoModal1_{{ctrl.replaceSpacesWithUnderline('Drip'+drip.name)}}" tabindex="-1" aria-labelledby="infoModalLabel1" aria-hidden="true">
+            <i class="fa-solid fa-circle-info"  style="margin-left: 10px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#infoModal1_drips_{{$index}}"></i>
+            <div class="modal fade" id="infoModal1_drips_{{$index}}" tabindex="-1" aria-labelledby="infoModalLabel_drips_{{$index}}" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header green">
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      <h5 class="modal-title" id="infoModalLabel1"><b>{{drip.name}}</b> Calculation Details:</h5>
+                      <h5 class="modal-title" id="infoModalLabel_drips_{{$index}}">Calculation of <b>{{drip.name}}</b> Drips</h5>                      
                     </div>                    
                     <div class="modal-body">                      
                       <b>Intravenous infusion rate: </b> {{ctrl.getDoseByTimeUnit(drip)}} {{drip.dose_unit}}/kg/{{ (!!drip.dose_per_kg_per_min) ? 'minute' : 'hour' }}<br/>
@@ -28,9 +28,6 @@
                           <li>Dilution: To prepare a solution in {{drip.default_dilution_volume_ml}} ml, add {{ctrl.calcDilutionPerKg(drip).doseForDilution}} {{ctrl.calcDilutionPerKg(drip).unitsForDilution}}
                              of the drug (calculated as {{ctrl.calcDilutionPerKg(drip).doseBeforeDilution}} {{ctrl.calcDilutionPerKg(drip).unitsBeforeDilution}} * {{drip.default_dilution_volume_ml}} ml)</li>
                         </ul>
-                        <!-- Intravenous speed is {{ctrl.getDoseByTimeUnit(drip)}} {{drip.dose_unit}}/Kg/{{ (!!drip.dose_per_kg_per_min) ? 'min' : 'hour' }}<br>
-                        For child weighted {{ctrl.weight}} kg, total dose for an hour is {{ctrl.calcDilutionPerKg(drip).doseBeforeDilution}} {{ctrl.calcDilutionPerKg(drip).unitsBeforeDilution}} (i.e. {{ctrl.getDoseByTimeUnit(drip)}}*{{ctrl.weight}}{{!!drip.dose_per_kg_per_min ? '*60 minutes' : ''}}) <br>
-                        For dilution in <b>{{drip.default_dilution_volume_ml}}ml</b> you need to add <b>{{ctrl.calcDilutionPerKg(drip).doseForDilution}} {{ctrl.calcDilutionPerKg(drip).unitsForDilution}}</b> (i.e. {{ctrl.calcDilutionPerKg(drip).doseBeforeDilution}}{{ctrl.calcDilutionPerKg(drip).unitsBeforeDilution}}*{{drip.default_dilution_volume_ml}}ml) <br> -->
                         <b>Note:</b> The intravenous infusion rate range is {{drip.allowed_dose_range}}.
                     </div>
                   </div>
@@ -40,10 +37,3 @@
         </li>
       </ul>  
 </div>
-
-<!-- <div class="modal-body">
-    קצב עירוי <b>:</b> {{ctrl.dripDefinition(drip.name).dose_per_kg_per_min != null && ctrl.dripDefinition(drip.name).dose_per_kg_per_min != undefined ? ctrl.dripDefinition(drip.name).dose_per_kg_per_min : ctrl.dripDefinition(drip.name).dose_per_kg_per_hour}} {{ctrl.dripDefinition(drip.name).dose_unit}}/Kg/{{ (ctrl.dripDefinition(drip.name).dose_per_kg_per_min) ? 'min' : 'Hr' }}={{ctrl.dripDefinition(drip.name).target_volume_ml_per_hour}}ml/Hr <br>
-    משקל ילד<b>:</b> {{ctrl.weight}}ק"ג <br> Total dose by weight for an hour<b>:</b> {{ctrl.calcDilutionPerKg(drip).doseBeforeDilution}} {{ctrl.calcDilutionPerKg(drip).unitsBeforeDilution}} = ({{ctrl.dripDefinition(drip.name).dose_per_kg_per_min}}*{{ctrl.weight}}*60 minutes) <br>
-    עבור דילול ב <b>{{ctrl.dripDefinition(drip.name).default_dilution_volume_ml}}ml</b>מים, יש להוסיף  <b>{{ctrl.calcDilutionPerKg(drip).doseForDilution}} {{ctrl.calcDilutionPerKg(drip).unitsForDilution}}</b> = ({{ctrl.calcDilutionPerKg(drip).doseBeforeDilution}}*{{ctrl.dripDefinition(drip.name).default_dilution_volume_ml}}) <br>
-    <b>שים לב</b> טווח קצב עירוי מותר<b>:</b> {{ctrl.dripDefinition(drip.name).allowed_dose_range}}
-</div> -->

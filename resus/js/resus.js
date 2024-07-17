@@ -31,8 +31,8 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     const ctrl = this;
     window.ctrl = this;
     ctrl.dataShown = 'CALCULATOR'; // possible values: CALCULATOR, WEIGHTS, LMA
-    ctrl.weight = 10;
-    ctrl.age = '18 month';
+    ctrl.weight;
+    ctrl.age;
     ctrl.ageScale = 'YEARS';
     ctrl.sex; // possible values: MALE, FEMALE
     ctrl.drugsData = {};
@@ -190,7 +190,7 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         if (drugDefintion.maxDose){
             doseByWeight = Math.min(drugDefintion.maxDose, doseByWeight);
         }
-        return doseByWeight;
+        return doseByWeight.toFixed(2);
     }
 
     ctrl.splitRatio = function(ratio) {
