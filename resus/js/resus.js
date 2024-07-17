@@ -31,8 +31,8 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     const ctrl = this;
     window.ctrl = this;
     ctrl.dataShown = 'CALCULATOR'; // possible values: CALCULATOR, WEIGHTS, LMA
-    ctrl.weight;
-    ctrl.age;
+    ctrl.weight = 10;
+    ctrl.age = '18 month';
     ctrl.ageScale = 'YEARS';
     ctrl.sex; // possible values: MALE, FEMALE
     ctrl.drugsData = {};
@@ -57,15 +57,7 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
             createDropDownData();
         });        
         $http.get('/resus/data/drips.json').then(function(response) {
-            items = response.data.drugs;
-            ctrl.dripsDefinitions = items.reduce((acc, item) => {
-                // Destructure the item to separate the name from the other attributes
-                let { name, ...attributes } = item;
-                // Add the name as the key and the other attributes as the value
-                attributes.name = name;
-                acc[name] = attributes;
-                return acc;
-            }, {});
+            ctrl.dripsDefinitions = response.data.drugs;
         });
 
     };    
@@ -176,48 +168,42 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
             const currData = ctrl.airwaysData.dataByAge[i];
             if (ctrl.age == currData.age) {
                 ctrl.airwaysForAge = currData;
-
-                if (ctrl.weight) {
-                    ctrl.dripsInstructions = calcDripsInstructionDict(Object.values(ctrl.dripsDefinitions), ctrl.weight);
-                }
                 return;
             }
         }
+    };
+
+    ctrl.getDoseByTimeUnit = function(drip) {
+        return drip.dose_per_kg_per_min ?? drip.dose_per_kg_per_hour;
+    };
+
+    ctrl.calcDilutionPerKg = function(drip) {
+        return calcDilutionPerKg(drip, ctrl.weight);  
     };
 
     ctrl.closeTooltip = function() {
         ctrl.tooltipIndex = "";
     }
 
-    ctrl.evalDose2 = function(drug) {
-        if (!drug.dose_2) {
-            return "";
-        }
-        var body = "return " + drug.dose_2 + ";";
-        var func = new Function("dose", "weight", body);
-        return formatNumberValue(func(drug.dose, ctrl.weight));
-    };
-
-    ctrl.evalVolume = function(drug) {
-        if (!drug.volume) {
-            return "";
-        }
-        var body = "return " + drug.volume + ";"
-        var func = new Function("dose", "weight", "dose_2", body);
-        return formatNumberValue(func(drug.dose, ctrl.weight, ctrl.evalDose2(drug)));
-    };
-
-
-    ctrl.calcVolume = function(drugDefintion){
+    ctrl.getDoseByWeight = function(drugDefintion) {
         let doseByWeight = drugDefintion.dose_per_kg * ctrl.weight;
         if (drugDefintion.maxDose){
             doseByWeight = Math.min(drugDefintion.maxDose, doseByWeight);
         }
-        const [numerator, denominator] = drugDefintion.density.split('/').map(Number);
-        const density = numerator / denominator;
-
-        return formatNumberValue(doseByWeight / density);
+        return doseByWeight;
     }
+
+    ctrl.splitRatio = function(ratio) {
+        return ratio.split('/').map(Number);
+    };
+
+    ctrl.calcVolume = function(drugDefintion){
+        const doseByWeight = ctrl.getDoseByWeight(drugDefintion);
+        const [numerator, denominator] = ctrl.splitRatio(drugDefintion.concentration);
+        const concentration = numerator / denominator;
+
+        return formatNumberValue(doseByWeight / concentration);
+    };
     
     ctrl.selectSex = function(sex) {
         ctrl.sex = sex;

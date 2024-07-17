@@ -11,7 +11,7 @@
                 "dose_2":"Math.min(dose*weight,1)",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*10/1",
-                "density": "1/10",
+                "concentration": "1/10",
                 "of":"of 1:10,000",
                 "maxDose": "1",
                 "maxDoseUnit": "mg"
@@ -24,7 +24,7 @@
                 "dose_2":"Math.min(Math.max(dose*weight,0.1),1)",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*10/1",
-                "density": "1/10",
+                "concentration": "1/10",
                 "of":"of 1:10,000",
                 "maxDose": "1",
                 "maxDoseUnit": "mg"
@@ -37,7 +37,7 @@
                 "dose_2":"Math.min(dose*weight,300)",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*1/50",
-                "density": "50/1",
+                "concentration": "50/1",
                 "of":"of 50 mg/ml",
                 "maxDose": "300",
                 "maxDoseUnit": "mg"
@@ -51,7 +51,7 @@
                 "dose_2":"dose*weight",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*1/10",
-                "density": "10/1",
+                "concentration": "10/1",
                 "of":"of 10 mg/ml"
              },
              {
@@ -63,7 +63,7 @@
                 "dose_2":"Math.min(dose*weight,2000)",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*1/500",
-                "density": "500/1",
+                "concentration": "500/1",
                 "of":"of 50% (500 mg/ml)",
                 "maxDose": "2000",
                 "maxDoseUnit": "mg"
@@ -77,7 +77,7 @@
                 "dose_2":"dose*weight",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*1/100",
-                "density": "100/1",
+                "concentration": "100/1",
                 "of":"of 10% "
              },
              {
@@ -89,7 +89,7 @@
                 "dose_2":"dose*weight",
                 "dose_2_unit":"meq",
                 "volume":"dose_2",
-                "density": "1/1",
+                "concentration": "1/1",
                 "of":"of 8.4% "
              },
              {
@@ -101,7 +101,7 @@
                 "dose_2":"dose*weight",
                 "dose_2_unit":"gr",
                 "volume":"dose_2*100/10",
-                "density": "10/100",
+                "concentration": "10/100",
                 "of":"of Dextrose 10%"
              },
              {
@@ -113,7 +113,7 @@
                 "dose_2":"dose*weight",
                 "dose_2_unit":"gr",
                 "volume":"dose_2*100/25",
-                "density": "25/100",
+                "concentration": "25/100",
                 "of":"of Dextrose 25%"
              }
           ]
@@ -130,7 +130,7 @@
                 "dose_2":"dose*weight",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*1/10",
-                "density": "10/1",
+                "concentration": "10/1",
                 "of":"of 10 mg/ml"
              },
              {
@@ -142,7 +142,7 @@
                 "dose_2":"dose*weight",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*1/10",
-                "density": "10/1",
+                "concentration": "10/1",
                 "of":"of 10 mg/ml"
              },
              {
@@ -154,7 +154,7 @@
                 "dose_2":"Math.min(dose*weight,20)",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*10/20",
-                "density": "20/10",
+                "concentration": "20/10",
                 "of":"of 20 mg/10ml ",
                 "maxDose": "20",
                 "maxDoseUnit": "mg"
@@ -167,7 +167,7 @@
                 "dose_2":"Math.min(dose*weight,100)",
                 "dose_2_unit":"mcg",
                 "volume":"dose_2*1/50",
-                "density": "50/1",
+                "concentration": "50/1",
                 "of":"of 50 mcg/ml",
                 "maxDose": "100",
                 "maxDoseUnit": "mcg"
@@ -180,7 +180,7 @@
                 "dose_2":"dose*weight",
                 "dose_2_unit":"mg",
                 "volume":"dose_2",
-                "density": "1/1",
+                "concentration": "1/1",
                 "of":"of 1 mg/ml"
              }
           ]
@@ -197,7 +197,7 @@
                 "dose_2":"Math.min(dose*weight,150)",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*1/10",
-                "density": "10/1",
+                "concentration": "10/1",
                 "of":"of 10 mg/ml",
                 "maxDose": "150",
                 "maxDoseUnit": "mg"
@@ -211,7 +211,7 @@
                 "dose_2":"dose*weight",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*1/10",
-                "density": "10/1",
+                "concentration": "10/1",
                 "of":"of 10 mg/ml"
              }
           ]
@@ -227,7 +227,7 @@
                 "dose_2":"Math.min(dose*weight,0.5)",
                 "dose_2_unit":"mg",
                 "volume":"dose_2",
-                "density": "1/1",
+                "concentration": "1/1",
                 "of":"of 1:1000",
                 "maxDose": "0.5",
                 "maxDoseUnit": "mg"
@@ -245,7 +245,7 @@
                 "dose_2":"",
                 "dose_2_unit":"",
                 "volume":"Math.min(dose*weight,1000)",
-                "density": "",
+                "concentration": "",
                 "of":"of NACL 0.9%",
                 "maxDose": "1000",
                 "maxDoseUnit": "ml"
@@ -263,7 +263,7 @@
                 "dose_2":"Math.min(dose*weight,6)",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*1/3",
-                "density": "3/1",
+                "concentration": "3/1",
                 "of":"of 3 mg/ml",
                 "maxDose": "6",
                 "maxDoseUnit": "mg"
@@ -276,7 +276,7 @@
                 "dose_2":"Math.min(dose*weight,12)",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*1/3",
-                "density": "3/1",
+                "concentration": "3/1",
                 "of":"of 3 mg/ml",
                 "maxDose": "12",
                 "maxDoseUnit": "mg"
@@ -289,7 +289,7 @@
                 "dose_2":"Math.min(dose*weight,100)",
                 "dose_2_unit":"mg",
                 "volume":"",
-                "density": "",
+                "concentration": "",
                 "of":"",
                 "maxDose": "100",
                 "maxDoseUnit": "mg"
@@ -307,7 +307,7 @@
                 "dose_2":"Math.min(dose*weight,10)",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*1/5",
-                "density": "5/1",
+                "concentration": "5/1",
                 "of":"of 5 mg/ml",
                 "maxDose": "10",
                 "maxDoseUnit": "mg"
@@ -321,7 +321,7 @@
                 "dose_2":"Math.min(dose*weight,4500)",
                 "dose_2_unit":"mg",
                 "volume":"",
-                "density": "",
+                "concentration": "",
                 "of":"",
                 "maxDose": "4500",
                 "maxDoseUnit": "mg"
@@ -334,7 +334,7 @@
                 "dose_2":"Math.min(dose*weight,1000)",
                 "dose_2_unit":"mg",
                 "volume":"",
-                "density": "",
+                "concentration": "",
                 "of":"",
                 "maxDose": "1000",
                 "maxDoseUnit": "mg"
@@ -347,7 +347,7 @@
                 "dose_2":"Math.min(dose*weight,1000)",
                 "dose_2_unit":"mg",
                 "volume":"",
-                "density": "",
+                "concentration": "",
                 "of":"",
                 "maxDose": "1000",
                 "maxDoseUnit": "mg"
@@ -361,7 +361,7 @@
                 "dose_2":"Math.min(dose*weight,5000)",
                 "dose_2_unit":"mg",
                 "volume":"",
-                "density": "",
+                "concentration": "",
                 "of":"",
                 "maxDose": "5000",
                 "maxDoseUnit": "mg"
@@ -374,7 +374,7 @@
                 "dose_2":"dose*weight",
                 "dose_2_unit":"mg",
                 "volume":"dose_2",
-                "density": "1/1",
+                "concentration": "1/1",
                 "of":"of 1 mg/ml"
              }
           ]
@@ -391,7 +391,7 @@
                 "dose_2":"dose*weight",
                 "dose_2_unit":"gr",
                 "volume":"dose*weight*5",
-                "density": "1/5",
+                "concentration": "1/5",
                 "of":"of Manitol 20%"
              },
              {
@@ -402,7 +402,7 @@
                 "dose_2":"",
                 "dose_2_unit":"",
                 "volume":"dose*weight",
-                "density": "1/1",
+                "concentration": "1/1",
                 "of":"of NACL3%"
              }
           ]
@@ -419,7 +419,7 @@
                 "dose_2":"Math.min(dose*weight,2)",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*1/0.4",
-                "density": "0.4/1",
+                "concentration": "0.4/1",
                 "of":"of 0.4 mg/ml",
                 "maxDose": "2",
                 "maxDoseUnit": "mg"
@@ -432,7 +432,7 @@
                 "dose_2":"Math.min(dose*weight,0.2)",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*5/0.5",
-                "density": "0.5/5",
+                "concentration": "0.5/5",
                 "of":"of 0.5 mg/5 ml",
                 "maxDose": "0.2",
                 "maxDoseUnit": "mg"
@@ -445,7 +445,7 @@
                 "dose_2":"dose*weight",
                 "dose_2_unit":"mg",
                 "volume":"dose_2*1/100",
-                "density": "100/1",
+                "concentration": "100/1",
                 "of":"of 100 mg/ml"
              },
              {
@@ -457,7 +457,7 @@
                 "dose_2":"Math.min(dose*weight,100)",
                 "dose_2_unit":"gr",
                 "volume":"dose_2*250/50",
-                "density": "50/250",
+                "concentration": "50/250",
                 "of":"of 50 gram/250 ml",
                 "maxDose": "100",
                 "maxDoseUnit": "gr"
