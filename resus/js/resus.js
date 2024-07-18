@@ -190,7 +190,7 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         if (drugDefintion.maxDose){
             doseByWeight = Math.min(drugDefintion.maxDose, doseByWeight);
         }
-        return doseByWeight.toFixed(2);
+        return formatNumberValue(doseByWeight);
     }
 
     ctrl.splitRatio = function(ratio) {
