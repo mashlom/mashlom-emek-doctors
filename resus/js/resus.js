@@ -1,32 +1,5 @@
 var app = angular.module("app", []);
 
-function formatNumberValue(value) {
-    // If the value is null or undefined, return an empty string
-    if (value == null) {
-        return "";
-    }
-
-    // If the value is a string, return it as is
-    if (typeof value === "string") {
-        return value;
-    }
-
-    // If the value is a number
-    if (typeof value === "number") {
-        // Check if the number has a decimal point
-        if (value % 1 !== 0) {
-            // Convert to string with one digit after the decimal point
-            return value.toFixed(2);
-        } else {
-            // Convert to string without decimal point
-            return value.toString();
-        }
-    }
-
-    // For other types, return an empty string
-    return "";
-}
-  
 app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', function($scope, $rootScope, $timeout, $http) {
     const ctrl = this;
     window.ctrl = this;
@@ -70,25 +43,15 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         return ctrl.dripsDefinitions[drugName];
     }
 
-    function createTooltipMessage(drugDefintion, caseInstruction, childKg){
-        let tooltip = `${drugDefintion.name}: Data used for calculation: `;
-        if (drugDefintion.dose_per_kg_per_min){
-            tooltip += `Dose speed ${drugDefintion.dose_per_kg_per_min} ${drugDefintion.dose_unit}/Kg/min=${drugDefintion.default_dilution_volume_ml}ml/Hr. `;
-        }
-        else if (drugDefintion.dose_per_kg_per_hour){
-            tooltip += `Dose speed: ${drugDefintion.dose_per_kg_per_hour} ${drugDefintion.dose_unit}/Kg/Hr=${drugDefintion.default_dilution_volume_ml}ml/Hr. `;
-        }
-        else{
-            tooltip = "no data...";
-        }
-        tooltip += `Child Weight: ${childKg}Kg. Total dose before dilution=${caseInstruction.doseBeforeDilution} ${caseInstruction.unitsBeforeDilution}. 
-        Dilution of ${drugDefintion.default_dilution_volume_ml}ml and target of ${drugDefintion.target_volume_ml_per_hour}ml/Hr
-        you need to add: ${caseInstruction.doseForDilution} ${caseInstruction.unitsForDilution} in ${drugDefintion.default_dilution_volume_ml}ml.
-        Notice: Allowed Range is :${drugDefintion.allowed_dose_range}`;
+    ctrl.formatNumber = function(num) {
+        // Use toFixed(2) to get a string with two decimal places
+        let formatted = num.toFixed(2);
+        
+        // Use a regular expression to remove trailing zeros
+        formatted = formatted.replace(/\.?0+$/, '');
     
-        return tooltip;
+        return formatted;
     }
-    
 
     function createDropDownData(){
         const ages = ctrl.airwaysData.dataByAge.map(item => item.age);
@@ -185,24 +148,36 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         ctrl.tooltipIndex = "";
     }
 
-    ctrl.getDoseByWeight = function(drugDefintion) {
+    ctrl.getDoseByWeightWithMaxLimit = function(drugDefintion) {
         let doseByWeight = drugDefintion.dose_per_kg * ctrl.weight;
         if (drugDefintion.maxDose){
             doseByWeight = Math.min(drugDefintion.maxDose, doseByWeight);
         }
-        return formatNumberValue(doseByWeight);
+        return doseByWeight;
     }
 
     ctrl.splitRatio = function(ratio) {
         return ratio.split('/').map(Number);
     };
 
+    
+    ctrl.calcAmountToAdminister = function(drugDefintion) {
+        let amount;
+        if (drugDefintion.type == 'fluid' || drugDefintion.type == 'mass'){
+            amount = ctrl.getDoseByWeightWithMaxLimit(drugDefintion);
+        }else {
+            amount = ctrl.calcVolume(drugDefintion);
+        }
+
+        return ctrl.formatNumber(amount);
+    }
+
     ctrl.calcVolume = function(drugDefintion){
-        const doseByWeight = ctrl.getDoseByWeight(drugDefintion);
+        const doseByWeight = ctrl.getDoseByWeightWithMaxLimit(drugDefintion);
         const [numerator, denominator] = ctrl.splitRatio(drugDefintion.concentration);
         const concentration = numerator / denominator;
 
-        return formatNumberValue(doseByWeight / concentration);
+        return doseByWeight / concentration;
     };
     
     ctrl.selectSex = function(sex) {

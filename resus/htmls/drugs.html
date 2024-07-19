@@ -4,8 +4,8 @@
         <li  class="list-group-item">
         <div style="display: flex; justify-content: space-between; text-align: left; color: var(--page-font-color);">
             <span>
-                {{drug.name}}: <b> {{ctrl.calcVolume(drug)}} ml</b> - <span ng-class="{'bold-text': drug.howToGive && drug.howToGive.trim() !== 'IV'}">{{drug.howToGive}}</span>
-                <div ng-if="!!drug.maxDose && drug.maxDose==ctrl.getDoseByWeight(drug)">
+                {{drug.name}}: <b> {{ctrl.calcAmountToAdminister(drug)}} ml</b> - <span ng-class="{'bold-text': drug.howToGive && drug.howToGive.trim() !== 'IV'}">{{drug.howToGive}}</span>
+                <div ng-if="!!drug.maxDose && drug.maxDose==ctrl.getDoseByWeightWithMaxLimit(drug)">
                   <span style="color:red;"><b>Used max dose of {{drug.maxDose}}&nbsp;{{drug.maxDoseUnit}}</b></span>
                 </div>        
             </span>
@@ -21,9 +21,9 @@
                         <b>Dosage ratio: </b>{{drug.dose_per_kg}} {{drug.dose_unit}}/kg<br/>
                         <b>Calculation for a child weighing {{ctrl.weight}} kg:</b>
                         <ul>
-                          <li>Total dose: {{ctrl.getDoseByWeight(drug)}} {{drug.dose_unit}} (calculated as {{drug.dose_per_kg}} {{drug.dose_unit}}/kg * {{ctrl.weight}} kg)</li>
-                          <li>Concentration of {{drug.name}}: {{ctrl.splitRatio(drug.concentration)[0]}} {{drug.dose_unit}} per {{ctrl.splitRatio(drug.concentration)[1]}} ml</li>
-                          <li>Volume to administer: {{ctrl.calcVolume(drug)}} ml (calculated as total dose / concentration)</li>
+                          <li>Total dose: {{ctrl.getDoseByWeightWithMaxLimit(drug)}} {{drug.dose_unit}} (calculated as {{drug.dose_per_kg}} {{drug.dose_unit}}/kg * {{ctrl.weight}} kg)</li>
+                          <li ng-if="!!!drug.type">Concentration of {{drug.name}}: {{ctrl.splitRatio(drug.concentration)[0]}} {{drug.dose_unit}} per {{ctrl.splitRatio(drug.concentration)[1]}} ml</li>
+                          <li ng-if="!!!drug.type">Volume to administer: {{ctrl.calcAmountToAdminister(drug)}} ml (calculated as total dose / concentration)</li>
                         </ul>
                     </div>
                   </div>

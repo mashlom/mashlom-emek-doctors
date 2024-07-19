@@ -248,7 +248,8 @@
                 "concentration": "",
                 "of":"of NACL 0.9%",
                 "maxDose": "1000",
-                "maxDoseUnit": "ml"
+                "maxDoseUnit": "ml",
+                "type": "fluid"
              }
           ]
        },
@@ -402,8 +403,9 @@
                 "dose_2":"",
                 "dose_2_unit":"",
                 "volume":"dose*weight",
-                "concentration": "1/1",
-                "of":"of NACL3%"
+                "concentration": "",
+                "of":"of NACL3%",
+                "type": "fluid"
              }
           ]
        },
