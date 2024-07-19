@@ -141,6 +141,10 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         return calcDilutionPerKg(drip, ctrl.weight);  
     };
 
+    ctrl.calcInfusionSpeed = function(drip) {
+        return ctrl.formatNumber(calcInfusionSpeed(drip, ctrl.weight));
+    };
+
     ctrl.closeTooltip = function() {
         ctrl.tooltipIndex = "";
     }
@@ -151,6 +155,20 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
             doseByWeight = Math.min(drugDefintion.maxDose, doseByWeight);
         }
         return doseByWeight;
+    }
+
+    ctrl.getDripDosePerHourPerWeight = function(drugData) {
+        return ctrl.formatNumber(calcDosePerHourPerWeight(drugData, ctrl.weight));
+    }
+    
+    ctrl.calcInfusionSpeed = function(drugData) {
+        const dosePerKg = calcDosePerHourPerWeight(drugData, ctrl.weight);
+        if (drugData.dose_unit !== drugData.existing_dilution_concentration_dose_unit){
+            throw new Error("Dosage unit and existing concentration does not match. need to implement units aligmnet before calculation. drug with error:" + drugData.name);
+        }
+        const [numerator, denominator] = ctrl.splitRatio(drugData.existing_dilution_concentration);
+        const concentration = numerator / denominator;
+        return dosePerKg / concentration;  // Volume = Mass / Concentration
     }
 
     ctrl.splitRatio = function(ratio) {
