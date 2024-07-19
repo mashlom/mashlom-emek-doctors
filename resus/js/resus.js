@@ -20,7 +20,6 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     ctrl.tooltipIndex = "";
 
     function init() {
-        // $http.get('/resus/data/resus-drugs.json').then(function(response) {
         $http.get('/resus/data/resus-drugs-definitions.json').then(function(response) {
             ctrl.drugsData = response.data;
         });
@@ -98,8 +97,6 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     ctrl.replaceSpacesWithUnderline = function(str){
         return str.replace(/ /g,"_");
     }
-
-
 
     ctrl.ageAsInTable = function() {
         if (ctrl.age == 1 && ctrl.ageScale == 'YEARS') {

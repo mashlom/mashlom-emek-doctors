@@ -8,11 +8,7 @@
                 "howToGive":"IV רק בהחייאה ",
                 "dose_per_kg":0.01,
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,1)",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*10/1",
                 "concentration": "1/10",
-                "of":"of 1:10,000",
                 "maxDose": "1",
                 "maxDoseUnit": "mg"
              },
@@ -21,11 +17,7 @@
                 "howToGive":"IV",
                 "dose_per_kg":0.02,
                 "dose_unit":"mg",
-                "dose_2":"Math.min(Math.max(dose*weight,0.1),1)",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*10/1",
                 "concentration": "1/10",
-                "of":"of 1:10,000",
                 "maxDose": "1",
                 "maxDoseUnit": "mg"
              },
@@ -34,11 +26,7 @@
                 "howToGive":"IV רק בהחייאה ",
                 "dose_per_kg":5,
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,300)",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*1/50",
                 "concentration": "50/1",
-                "of":"of 50 mg/ml",
                 "maxDose": "300",
                 "maxDoseUnit": "mg"
              },
@@ -48,11 +36,7 @@
                 "dose_per_kg":1,
                 "dose_unit_display":"mg/Kg over 2-4 min",
                 "dose_unit":"mg",
-                "dose_2":"dose*weight",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*1/10",
-                "concentration": "10/1",
-                "of":"of 10 mg/ml"
+                "concentration": "10/1"
              },
              {
                 "name":"Magnesium Sulfate",
@@ -60,11 +44,7 @@
                 "dose_per_kg":50,
                 "dose_unit_display":"mg/Kg(25-50)",
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,2000)",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*1/500",
                 "concentration": "500/1",
-                "of":"of 50% (500 mg/ml)",
                 "maxDose": "2000",
                 "maxDoseUnit": "mg"
              },
@@ -74,11 +54,7 @@
                 "dose_per_kg":100,
                 "dose_unit_display":"mg/Kg(1ml/kg)",
                 "dose_unit":"mg",
-                "dose_2":"dose*weight",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*1/100",
-                "concentration": "100/1",
-                "of":"of 10% "
+                "concentration": "100/1"
              },
              {
                 "name":"Sodium Bicarbonate",
@@ -86,11 +62,7 @@
                 "dose_per_kg":1,
                 "dose_unit_display":"meq/Kg(1ml/kg)",
                 "dose_unit":"meq",
-                "dose_2":"dose*weight",
-                "dose_2_unit":"meq",
-                "volume":"dose_2",
-                "concentration": "1/1",
-                "of":"of 8.4% "
+                "concentration": "1/1"
              },
              {
                 "name":"Dextrose 10%",
@@ -98,11 +70,7 @@
                 "dose_per_kg":0.2,
                 "dose_unit_display":"gr/Kg(2ml/Kg)",
                 "dose_unit":"gr",
-                "dose_2":"dose*weight",
-                "dose_2_unit":"gr",
-                "volume":"dose_2*100/10",
-                "concentration": "10/100",
-                "of":"of Dextrose 10%"
+                "concentration": "10/100"
              },
              {
                 "name":"Dextrose 25%",
@@ -110,11 +78,7 @@
                 "dose_per_kg":0.2,
                 "dose_unit_display":"gr/Kg(0.8ml/Kg)",
                 "dose_unit":"gr",
-                "dose_2":"dose*weight",
-                "dose_2_unit":"gr",
-                "volume":"dose_2*100/25",
-                "concentration": "25/100",
-                "of":"of Dextrose 25%"
+                "concentration": "25/100"
              }
           ]
        },
@@ -127,11 +91,7 @@
                 "dose_per_kg":1,
                 "dose_unit_display":"mg/Kg(0.5-2)",
                 "dose_unit":"mg",
-                "dose_2":"dose*weight",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*1/10",
-                "concentration": "10/1",
-                "of":"of 10 mg/ml"
+                "concentration": "10/1"
              },
              {
                 "name":"Propofol",
@@ -139,11 +99,7 @@
                 "dose_per_kg":1,
                 "dose_unit_display":"mg/Kg (0.5-3)",
                 "dose_unit":"mg",
-                "dose_2":"dose*weight",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*1/10",
-                "concentration": "10/1",
-                "of":"of 10 mg/ml"
+                "concentration": "10/1"
              },
              {
                 "name":"Etomidate",
@@ -151,11 +107,7 @@
                 "dose_per_kg":0.3,
                 "dose_unit_display":"mg/Kg(0.2-0.6)",
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,20)",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*10/20",
                 "concentration": "20/10",
-                "of":"of 20 mg/10ml ",
                 "maxDose": "20",
                 "maxDoseUnit": "mg"
              },
@@ -164,11 +116,7 @@
                 "howToGive":"IV",
                 "dose_per_kg":1,
                 "dose_unit":"mcg",
-                "dose_2":"Math.min(dose*weight,100)",
-                "dose_2_unit":"mcg",
-                "volume":"dose_2*1/50",
                 "concentration": "50/1",
-                "of":"of 50 mcg/ml",
                 "maxDose": "100",
                 "maxDoseUnit": "mcg"
              },
@@ -177,11 +125,7 @@
                 "howToGive":"IV",
                 "dose_per_kg":0.1,
                 "dose_unit":"mg",
-                "dose_2":"dose*weight",
-                "dose_2_unit":"mg",
-                "volume":"dose_2",
-                "concentration": "1/1",
-                "of":"of 1 mg/ml"
+                "concentration": "1/1"
              }
           ]
        },
@@ -194,11 +138,7 @@
                 "dose_per_kg":1,
                 "dose_unit_display":"mg/Kg(1-2)",
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,150)",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*1/10",
                 "concentration": "10/1",
-                "of":"of 10 mg/ml",
                 "maxDose": "150",
                 "maxDoseUnit": "mg"
              },
@@ -208,11 +148,7 @@
                 "dose_per_kg":1,
                 "dose_unit_display":"mg/Kg(0.6-1.2)",
                 "dose_unit":"mg",
-                "dose_2":"dose*weight",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*1/10",
-                "concentration": "10/1",
-                "of":"of 10 mg/ml"
+                "concentration": "10/1"
              }
           ]
        },
@@ -224,11 +160,7 @@
                 "howToGive":"IM",
                 "dose_per_kg":0.01,
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,0.5)",
-                "dose_2_unit":"mg",
-                "volume":"dose_2",
                 "concentration": "1/1",
-                "of":"of 1:1000",
                 "maxDose": "0.5",
                 "maxDoseUnit": "mg"
              }
@@ -242,11 +174,7 @@
                 "howToGive":"IV",
                 "dose_per_kg":20,
                 "dose_unit":"ml",
-                "dose_2":"",
-                "dose_2_unit":"",
-                "volume":"Math.min(dose*weight,1000)",
                 "concentration": "",
-                "of":"of NACL 0.9%",
                 "maxDose": "1000",
                 "maxDoseUnit": "ml",
                 "type": "fluid"
@@ -261,11 +189,7 @@
                 "howToGive":"IV",
                 "dose_per_kg":0.1,
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,6)",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*1/3",
                 "concentration": "3/1",
-                "of":"of 3 mg/ml",
                 "maxDose": "6",
                 "maxDoseUnit": "mg"
              },
@@ -274,11 +198,7 @@
                 "howToGive":"IV",
                 "dose_per_kg":0.2,
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,12)",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*1/3",
                 "concentration": "3/1",
-                "of":"of 3 mg/ml",
                 "maxDose": "12",
                 "maxDoseUnit": "mg"
              },
@@ -287,11 +207,7 @@
                 "howToGive":"IV",
                 "dose_per_kg":4,
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,100)",
-                "dose_2_unit":"mg",
-                "volume":"",
                 "concentration": "",
-                "of":"",
                 "maxDose": "100",
                 "maxDoseUnit": "mg",
                 "type": "mass"
@@ -306,11 +222,7 @@
                 "howToGive":"",
                 "dose_per_kg":0.5,
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,10)",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*1/5",
                 "concentration": "5/1",
-                "of":"of 5 mg/ml",
                 "maxDose": "10",
                 "maxDoseUnit": "mg"
              },
@@ -320,11 +232,7 @@
                 "dose_per_kg":40,
                 "dose_unit_display":"mg/Kg(40-60)",
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,4500)",
-                "dose_2_unit":"mg",
-                "volume":"",
                 "concentration": "",
-                "of":"",
                 "maxDose": "4500",
                 "maxDoseUnit": "mg",
                 "type": "mass"
@@ -334,11 +242,7 @@
                 "howToGive":"IV",
                 "dose_per_kg":20,
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,1000)",
-                "dose_2_unit":"mg",
-                "volume":"",
                 "concentration": "",
-                "of":"",
                 "maxDose": "1000",
                 "maxDoseUnit": "mg",
                 "type": "mass"
@@ -348,11 +252,7 @@
                 "howToGive":"IV",
                 "dose_per_kg":20,
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,1000)",
-                "dose_2_unit":"mg",
-                "volume":"",
                 "concentration": "",
-                "of":"",
                 "maxDose": "1000",
                 "maxDoseUnit": "mg",
                 "type": "mass"
@@ -363,11 +263,7 @@
                 "dose_per_kg":40,
                 "dose_unit_display":"mg/Kg(20-40)",
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,5000)",
-                "dose_2_unit":"mg",
-                "volume":"",
                 "concentration": "",
-                "of":"",
                 "maxDose": "5000",
                 "maxDoseUnit": "mg",
                 "type": "mass"
@@ -377,11 +273,7 @@
                 "howToGive":"IV",
                 "dose_per_kg":0.1,
                 "dose_unit":"mg",
-                "dose_2":"dose*weight",
-                "dose_2_unit":"mg",
-                "volume":"dose_2",
-                "concentration": "1/1",
-                "of":"of 1 mg/ml"
+                "concentration": "1/1"
              }
           ]
        },
@@ -394,22 +286,14 @@
                 "dose_per_kg":1,
                 "dose_unit_display":"gr/Kg(0.5-1)",
                 "dose_unit":"gr",
-                "dose_2":"dose*weight",
-                "dose_2_unit":"gr",
-                "volume":"dose*weight*5",
-                "concentration": "1/5",
-                "of":"of Manitol 20%"
+                "concentration": "1/5"
              },
              {
                 "name":"NACL 3%",
                 "howToGive":"IV",
                 "dose_per_kg":5,
                 "dose_unit":"ml",
-                "dose_2":"",
-                "dose_2_unit":"",
-                "volume":"dose*weight",
                 "concentration": "",
-                "of":"of NACL3%",
                 "type": "fluid"
              }
           ]
@@ -423,11 +307,7 @@
                 "dose_per_kg":0.1,
                 "dose_unit_display":"mg/Kg (up to 4 doses)",
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,2)",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*1/0.4",
                 "concentration": "0.4/1",
-                "of":"of 0.4 mg/ml",
                 "maxDose": "2",
                 "maxDoseUnit": "mg"
              },
@@ -436,11 +316,7 @@
                 "howToGive":"IV",
                 "dose_per_kg":0.01,
                 "dose_unit":"mg",
-                "dose_2":"Math.min(dose*weight,0.2)",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*5/0.5",
                 "concentration": "0.5/5",
-                "of":"of 0.5 mg/5 ml",
                 "maxDose": "0.2",
                 "maxDoseUnit": "mg"
              },
@@ -449,11 +325,7 @@
                 "howToGive":"IV",
                 "dose_per_kg":16,
                 "dose_unit":"mg",
-                "dose_2":"dose*weight",
-                "dose_2_unit":"mg",
-                "volume":"dose_2*1/100",
-                "concentration": "100/1",
-                "of":"of 100 mg/ml"
+                "concentration": "100/1"
              },
              {
                 "name":"Charcoal",
@@ -461,11 +333,7 @@
                 "dose_per_kg":1,
                 "dose_unit":"gr",
                 "dose_unit_display":"gr/Kg(0.5-1)",
-                "dose_2":"Math.min(dose*weight,100)",
-                "dose_2_unit":"gr",
-                "volume":"dose_2*250/50",
                 "concentration": "50/250",
-                "of":"of 50 gram/250 ml",
                 "maxDose": "100",
                 "maxDoseUnit": "gr"
              }
