@@ -4,7 +4,7 @@
         <li  class="list-group-item">
         <div style="display: flex; justify-content: space-between; text-align: left; color: var(--page-font-color);">
             <span>
-                {{drug.name}}: <b> {{ctrl.calcAmountToAdminister(drug)}} ml</b> - <span ng-class="{'bold-text': drug.howToGive && drug.howToGive.trim() !== 'IV'}">{{drug.howToGive}}</span>
+                {{drug.name}}: <b> {{ctrl.calcAmountToAdminister(drug)}} {{ctrl.getAdministrationUnit(drug)}}</b> - <span ng-class="{'bold-text': drug.howToGive && drug.howToGive.trim() !== 'IV'}">{{drug.howToGive}}</span>
                 <div ng-if="!!drug.maxDose && drug.maxDose==ctrl.getDoseByWeightWithMaxLimit(drug)">
                   <span style="color:red;"><b>Used max dose of {{drug.maxDose}}&nbsp;{{drug.maxDoseUnit}}</b></span>
                 </div>        

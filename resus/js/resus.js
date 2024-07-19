@@ -160,7 +160,15 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         return ratio.split('/').map(Number);
     };
 
-    
+    ctrl.getAdministrationUnit = function(drugDefintion) {
+        if (drugDefintion.type == 'mass'){
+            return drugDefintion.dose_unit;
+        }
+        else{
+            return 'ml';
+        }
+    }
+
     ctrl.calcAmountToAdminister = function(drugDefintion) {
         let amount;
         if (drugDefintion.type == 'fluid' || drugDefintion.type == 'mass'){

@@ -293,7 +293,8 @@
                 "concentration": "",
                 "of":"",
                 "maxDose": "100",
-                "maxDoseUnit": "mg"
+                "maxDoseUnit": "mg",
+                "type": "mass"
              }
           ]
        },
@@ -325,7 +326,8 @@
                 "concentration": "",
                 "of":"",
                 "maxDose": "4500",
-                "maxDoseUnit": "mg"
+                "maxDoseUnit": "mg",
+                "type": "mass"
              },
              {
                 "name":"Phenytoin",
@@ -338,7 +340,8 @@
                 "concentration": "",
                 "of":"",
                 "maxDose": "1000",
-                "maxDoseUnit": "mg"
+                "maxDoseUnit": "mg",
+                "type": "mass"
              },
              {
                 "name":"Phenobarbitone",
@@ -351,7 +354,8 @@
                 "concentration": "",
                 "of":"",
                 "maxDose": "1000",
-                "maxDoseUnit": "mg"
+                "maxDoseUnit": "mg",
+                "type": "mass"
              },
              {
                 "name":"Valproic acid",
@@ -365,7 +369,8 @@
                 "concentration": "",
                 "of":"",
                 "maxDose": "5000",
-                "maxDoseUnit": "mg"
+                "maxDoseUnit": "mg",
+                "type": "mass"
              },
              {
                 "name":"Midazolam",
