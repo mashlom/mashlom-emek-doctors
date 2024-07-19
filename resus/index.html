@@ -144,6 +144,7 @@
 </div>
 <weights ng-show="ctrl.dataShown=='WEIGHTS'" ></weights>
 <lma ng-show="ctrl.dataShown=='LMA'"></lma>
+<definitions ng-show="ctrl.dataShown=='DRUGDEFINITIONS'"></definitions >
 </div>  
 <footer class="text-center text-white footer">
   <div class="footer-container">
@@ -154,10 +155,16 @@
       </a>
     </div>
     <a class="footer-button" ng-click="ctrl.openPanel('WEIGHTS')">
-        <div class="bottom-menu-color" ><i class="fa-solid fa-weight-scale"></i></div>
-        <div class="text">הערכת משקלים</div>
-      </a>
-    </div>
+      <div class="bottom-menu-color"><i class="fa-solid fa-weight-scale"></i>
+      </div>
+      <div class="text">הערכת משקלים</div>
+    </a>
+    <a class="footer-button" ng-click="ctrl.openPanel('DRUGDEFINITIONS')">
+      <div class="bottom-menu-color"><i class="fa-solid fa-database"></i>
+      </div>
+      <div class="text">נתוני תרופות</div>
+    </a>
+  </div>
   </div>
 </footer>
 <script src="../3rd-party/angularjs/angular.min.js"></script>
