@@ -156,10 +156,6 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         return calcDilutionPerKg(drip, ctrl.weight);
     };
 
-    ctrl.calcInfusionSpeed = function (drip) {
-        return ctrl.formatNumber(calcInfusionSpeed(drip, ctrl.weight));
-    };
-
     ctrl.closeTooltip = function () {
         ctrl.tooltipIndex = "";
     }
@@ -183,7 +179,7 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         }
         const [numerator, denominator] = ctrl.splitRatio(drugData.existing_dilution_concentration);
         const concentration = numerator / denominator;
-        return dosePerKg / concentration;  // Volume = Mass / Concentration
+        return ctrl.formatNumber(dosePerKg / concentration);  // Volume = Mass / Concentration
     }
 
     ctrl.splitRatio = function (ratio) {
