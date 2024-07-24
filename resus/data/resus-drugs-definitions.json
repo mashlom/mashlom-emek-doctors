@@ -86,13 +86,21 @@
           "name":"Sedation & RSI",
           "drugs":[
              {
-                "name":"Ketamin",
+                "name":"Ketamin 1mg",
                 "howToGive":"IV",
                 "dose_per_kg":1,
                 "dose_unit_display":"mg/Kg(0.5-2)",
                 "dose_unit":"mg",
                 "concentration": "10/1"
              },
+             {
+               "name":"Ketamin 1.5mg",
+               "howToGive":"IV",
+               "dose_per_kg":1.5,
+               "dose_unit_display":"mg/Kg(0.5-2)",
+               "dose_unit":"mg",
+               "concentration": "10/1"
+            },
              {
                 "name":"Propofol",
                 "howToGive":"IV ",
