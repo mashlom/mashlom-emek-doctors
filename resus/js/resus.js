@@ -160,6 +160,10 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         ctrl.tooltipIndex = "";
     }
 
+    ctrl.getDoseByWeightWithMaxLimitFormatted = function(drugDefintion){
+        return ctrl.formatNumber(ctrl.getDoseByWeightWithMaxLimit(drugDefintion));
+    }
+
     ctrl.getDoseByWeightWithMaxLimit = function (drugDefintion) {
         let doseByWeight = drugDefintion.dose_per_kg * ctrl.weight;
         if (drugDefintion.maxDose) {
