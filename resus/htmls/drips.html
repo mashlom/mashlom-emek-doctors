@@ -19,7 +19,7 @@
           </span>
           <br>
           Initial Rate: {{ctrl.getDoseByTimeUnit(drip)}} {{drip.dose_unit}}/kg/{{
-            (!!drip.dose_per_kg_per_min) ? 'minute' : 'hour' }}, 
+            (!!drip.dose_per_kg_per_min) ? 'minute' : 'hour' }}
           <br>  Rate Range: {{drip.allowed_dose_range}}
         </span>
         <i class="fa-solid fa-circle-info" style="margin-left: 10px; cursor: pointer;" data-bs-toggle="modal"
