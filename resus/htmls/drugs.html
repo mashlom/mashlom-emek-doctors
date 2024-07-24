@@ -7,7 +7,11 @@
                 {{drug.name}}: <b>{{ctrl.getDoseByWeightWithMaxLimitFormatted(drug)}} {{drug.dose_unit}}, {{ctrl.calcAmountToAdminister(drug)}} {{ctrl.getAdministrationUnit(drug)}}</b> - <span ng-class="{'bold-text': drug.howToGive && drug.howToGive.trim() !== 'IV'}">{{drug.howToGive}}</span>
                 <div ng-if="!!drug.maxDose && drug.maxDose==ctrl.getDoseByWeightWithMaxLimit(drug)">
                   <span style="color:red;"><b>Used max dose of {{drug.maxDose}}&nbsp;{{drug.maxDoseUnit}}</b></span>
-                </div>        
+                </div>
+                <!-- show concentration for duplicate drugs  -->
+                <div ng-if="drug.name.toLowerCase().includes('midazolam')"> 
+                <b>{{ctrl.splitRatio(drug.concentration)[0]}} {{drug.dose_unit}} per {{ctrl.splitRatio(drug.concentration)[1]}} ml </b>
+                </div>
             </span>
             <i class="fa-solid fa-circle-info"  style="margin-left: 10px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#infoModal1_{{$index}}{{$parent.$index}}"></i>
             <div class="modal fade" id="infoModal1_{{$index}}{{$parent.$index}}" tabindex="-1" aria-labelledby="infoModalLabel__{{$index}}{{$parent.$index}}" aria-hidden="true">
