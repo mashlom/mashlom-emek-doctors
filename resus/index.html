@@ -83,20 +83,20 @@
           <div ng-show="ctrl.age" style="cursor:pointer;">
             <i class="fa-solid fa-weight-scale" style="margin-left: 10px;"></i>
             משקל משוערך בנים: {{ctrl.esitmatedMaleWeight}} ק"ג 
-            <button type="button" class="btn btn-link ng-binding" ng-click="ctrl.applyMale()" style="padding-right: 0.1rem;" >
+            <button ng-if="false" type="button" class="btn btn-link ng-binding" ng-click="ctrl.applyMale()" style="padding-right: 0.1rem;" >
               (הזן)
             </button>
-            <button ng-if="false" type="button" class="btn btn-link ng-binding" ng-click="ctrl.applyMaleRounded()" style="padding-right: 0.1rem;" >
+            <button  type="button" class="btn btn-link ng-binding" ng-click="ctrl.applyMaleRounded()" style="padding-right: 0.1rem;" >
               (הזן ערך מעוגל)
             </button>
           </div>
           <div ng-show="ctrl.age" style="cursor:pointer; padding-top: 10px;" >
             <i class="fa-solid fa-weight-scale" style="margin-left: 10px;"></i>
             משקל משוערך בנות: {{ctrl.esitmatedFemaleWeight}} ק"ג            
-            <button type="button" class="btn btn-link ng-binding" ng-click="ctrl.applyFemale()" style="padding-right: 0.1rem;" >
+            <button ng-if="false" type="button" class="btn btn-link ng-binding" ng-click="ctrl.applyFemale()" style="padding-right: 0.1rem;" >
               (הזן)
             </button>
-            <button ng-if="false" type="button" class="btn btn-link ng-binding" ng-click="ctrl.applyFemaleRounded()" style="padding-right: 0.1rem;" >
+            <button type="button" class="btn btn-link ng-binding" ng-click="ctrl.applyFemaleRounded()" style="padding-right: 0.1rem;" >
               (הזן ערך מעוגל)
             </button>
           </div>
@@ -106,7 +106,7 @@
               משקל (ק"ג)
           </div>
           <div class="col input-col">
-              <input ng-change="ctrl.changedValue()" ng-model-options="{ allowInvalid: true}" inputmode="decimal" type="text" pattern="[0-9]{1,4}[.]{0,1}[0-9]{0,1}"
+              <input ng-change="ctrl.changedValue()" ng-model-options="{ allowInvalid: true}" inputmode="decimal" type="text" pattern="[0-9]{0,3}"
                  maxlength="4" style="max-width: 90px;" ng-model="ctrl.weight" class="form-control" id="weight" select-on-click >
           </div>
         </div>

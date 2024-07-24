@@ -24,7 +24,7 @@
                       <h5 class="modal-title" id="infoModalLabel_drips_{{$index}}">Calculation of <b>{{drip.name}}</b> Drips</h5>                      
                     </div>                    
                     <div ng-if="drip.calc_type==='DilutionInstructions'" class="modal-body">                      
-                      <b>Intravenous infusion rate: </b> {{ctrl.getDoseByTimeUnit(drip)}} {{drip.dose_unit}}/kg/{{ (!!drip.dose_per_kg_per_min) ? 'minute' : 'hour' }}<br/>
+                      <b>Initial intravenous infusion rate: </b> {{ctrl.getDoseByTimeUnit(drip)}} {{drip.dose_unit}}/kg/{{ (!!drip.dose_per_kg_per_min) ? 'minute' : 'hour' }}<br/>
                       <b>Calculation for a child weighing {{ctrl.weight}} kg:</b>
                         <ul>
                           <li>Total dose per hour: {{ctrl.calcDilutionPerKg(drip).doseBeforeDilution}} {{ctrl.calcDilutionPerKg(drip).unitsBeforeDilution}}

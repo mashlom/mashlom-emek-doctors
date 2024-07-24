@@ -4,7 +4,7 @@
         <li  class="list-group-item">
         <div style="display: flex; justify-content: space-between; text-align: left; color: var(--page-font-color);">
             <span>
-                {{drug.name}}: <b> {{ctrl.calcAmountToAdminister(drug)}} {{ctrl.getAdministrationUnit(drug)}}</b> - <span ng-class="{'bold-text': drug.howToGive && drug.howToGive.trim() !== 'IV'}">{{drug.howToGive}}</span>
+                {{drug.name}}: <b>{{ctrl.getDoseByWeightWithMaxLimit(drug)}} {{drug.dose_unit}}, {{ctrl.calcAmountToAdminister(drug)}} {{ctrl.getAdministrationUnit(drug)}}</b> - <span ng-class="{'bold-text': drug.howToGive && drug.howToGive.trim() !== 'IV'}">{{drug.howToGive}}</span>
                 <div ng-if="!!drug.maxDose && drug.maxDose==ctrl.getDoseByWeightWithMaxLimit(drug)">
                   <span style="color:red;"><b>Used max dose of {{drug.maxDose}}&nbsp;{{drug.maxDoseUnit}}</b></span>
                 </div>        
@@ -18,7 +18,7 @@
                       <h5 class="modal-title" id="infoModalLabel_{{$index}}{{$parent.$index}}">Calculation of <b>{{drug.name}}</b>  Volume</h5>                      
                     </div>
                     <div class="modal-body">
-                        <b>Dosage ratio: </b>{{drug.dose_per_kg}} {{drug.dose_unit}}/kg<br/>
+                        <b>Dosage: </b>{{drug.dose_per_kg}} {{drug.dose_unit}}/kg<br/>
                         <b>Calculation for a child weighing {{ctrl.weight}} kg:</b>
                         <ul>
                           <li>Total dose: {{ctrl.getDoseByWeightWithMaxLimit(drug)}} {{drug.dose_unit}} (calculated as {{drug.dose_per_kg}} {{drug.dose_unit}}/kg * {{ctrl.weight}} kg)</li>

@@ -86,11 +86,11 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     };
 
     ctrl.applyMaleRounded = function () {
-        ctrl.weight = Math.ceil(ctrl.esitmatedMaleWeight);
+        ctrl.weight = Math.round(ctrl.esitmatedMaleWeight);
     };
 
     ctrl.applyFemaleRounded = function () {
-        ctrl.weight = Math.ceil(ctrl.esitmatedFemaleWeight);
+        ctrl.weight = Math.round(ctrl.esitmatedFemaleWeight);
     };
 
     ctrl.applyFemale = function () {

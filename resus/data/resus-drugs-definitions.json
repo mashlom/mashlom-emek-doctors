@@ -218,8 +218,8 @@
           "name":"Convulsions",
           "drugs":[
              {
-                "name":"Midazolam INTRANASAL",
-                "howToGive":"",
+                "name":"Midazolam",
+                "howToGive":"INTRANASAL",
                 "dose_per_kg":0.5,
                 "dose_unit":"mg",
                 "concentration": "5/1",
