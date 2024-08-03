@@ -167,3 +167,21 @@ h1 {
   position: absolute;
   right: 10px;
 }
+
+.toggle-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.section-name {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.toggle-button {
+  color:white;
+  background-color: #1FB5A3;
+  width: 70px;
+}

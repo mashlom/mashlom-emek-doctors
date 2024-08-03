@@ -1,5 +1,12 @@
 <div ng-repeat="section in ctrl.drugsData.sections track by $index " style="direction: ltr;" ng-if="!!ctrl.weight">
-  <h4 class="drugs-header" style="text-align: center;">{{section.name}}</h4>
+  <h4 class="drugs-header" ng-click="ctrl.toggleSection($index)">
+    <span class="toggle-icon">
+      <span ng-show="!section.$isExpanded">+</span>
+      <span ng-show="section.$isExpanded">-</span>
+    </span>
+    <span class="section-name">{{section.name}}</span>
+  </h4>
+  <div ng-show="section.$isExpanded">
   <ul class="list-group" ng-repeat="drug in section.drugs track by $index">
     <li class="list-group-item">
       <div style="display: flex; justify-content: space-between; text-align: left; color: var(--page-font-color);">
@@ -50,7 +57,7 @@
           </div>
         </div>
       </div>
+    </li>
+  </ul>
 </div>
-</li>
-</ul>
 </div>

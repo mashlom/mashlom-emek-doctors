@@ -4,6 +4,11 @@
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: 1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .bold-text {

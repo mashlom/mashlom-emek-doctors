@@ -14,6 +14,7 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     ctrl.airwaysData = {};
     ctrl.dripsDefinitions = {};
     ctrl.dripsInstructions = {};
+    ctrl.dripsExpanded = false;
     ctrl.airwaysForAge = {};
     ctrl.estimatedWeighByAge = {};
     ctrl.esitmatedMaleWeight = "";
@@ -24,6 +25,9 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         $http.get('/resus/data/resus-drugs-definitions.json').then(function (response) {
             ctrl.drugsData = response.data;
             ctrl.drugDefinitonsForUI = ctrl.createDrugDefinitonsForUI(response.data)
+            ctrl.drugsData.sections.forEach(function(section) {
+                section.$isExpanded = false; // Start with all sections collapsed
+            });    
         });
         $http.get('/resus/data/airways.json').then(function (response) {
             ctrl.airwaysData = response.data;
@@ -55,7 +59,7 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
 
     ctrl.dripDefinition = function (drugName) {
         return ctrl.dripsDefinitions[drugName];
-    }
+    }    
 
     ctrl.formatNumber = function (num) {
         // Use toFixed(2) to get a string with two decimal places
@@ -184,6 +188,14 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         const [numerator, denominator] = ctrl.splitRatio(drugData.existing_dilution_concentration);
         const concentration = numerator / denominator;
         return ctrl.formatNumber(dosePerKg / concentration);  // Volume = Mass / Concentration
+    }
+
+    ctrl.toggleSection = function(index) {
+        ctrl.drugsData.sections[index].$isExpanded = !ctrl.drugsData.sections[index].$isExpanded;
+    };
+
+    ctrl.toggleDrips = function() {
+        ctrl.dripsExpanded = !ctrl.dripsExpanded;
     }
 
     ctrl.splitRatio = function (ratio) {
