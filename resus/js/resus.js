@@ -44,7 +44,7 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
         return data.sections.flatMap(category => {
             return category.drugs.map(drug => {
                 return {
-                    "drug_name": drug.name,
+                    "drug_name": `${drug.name} ${drug.howToGive}`,
                     "dosage": `${drug.dose_per_kg} ${drug.dose_unit}`,
                     "medical_concentration": drug.concentration ? `${drug.concentration} ${drug.dose_unit}/ml` : "",
                     "max_dose": drug.maxDose ? `${drug.maxDose} ${drug.maxDoseUnit}` : ""
