@@ -62,6 +62,9 @@ app.controller("ResusController", ['$scope', '$rootScope', '$timeout', '$http', 
     }    
 
     ctrl.formatNumber = function (num) {
+        if (!num || isNaN(value)) {
+            return "";
+        }
         // Use toFixed(2) to get a string with two decimal places
         let formatted = num.toFixed(2);
 

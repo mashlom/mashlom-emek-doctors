@@ -185,3 +185,8 @@ h1 {
   background-color: #1FB5A3;
   width: 70px;
 }
+
+[ng-cloak],
+[ng-cloak] * {
+    display: none !important;
+}
